@@ -1,0 +1,35 @@
+.footer{
+  background: #000;
+  padding:3.125rem 0 ;
+  position: relative;
+  scroll-snap-align: none;
+  .footer__cont{
+    margin: 1.875rem 0 1.25rem 0;
+    .footer__info{
+      color: #fff;
+      font-size:.9375rem;
+      line-height: 150%;
+      font-weight: 300;
+      display: flex;
+      .footer__info-item{
+        display: flex;
+        align-items: center;
+        &:last-child::after{
+          display: none;
+        }
+        &::after{
+          content: '';
+          display: block;
+          width: 1px;
+          height: 10px;
+          background: #fff;
+          margin: 0 5px;
+        }
+      }
+    }
+  }
+  .footer__copyright{
+    font-size: .875rem;
+    color: rgba($color: #fff, $alpha: 0.7);
+  }
+}

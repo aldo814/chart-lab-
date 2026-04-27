@@ -1,0 +1,80 @@
+.arrow-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  padding: .9375rem 2.25rem;
+  border-radius: 1.875rem;
+  border: 1px solid #FFF;
+  background: transparent;
+  color: #FFF;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &::after{
+    content:'';
+    width: 22px;
+    height: 8px;
+    background: url(../../assets/images/main/ico_arrow.svg) no-repeat center;
+    transition: all 0.3s ease;
+  }
+  &:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 3px 10px rgba($color: #000000, $alpha: 0.1);
+  }
+  &--white{
+    &:hover{
+      background: #fff;
+      color: #2F6BFF;
+      transition: all 0.3s ease;
+      &:after{
+        background: url(../../assets/images/main/ico_arrow-blue.svg) no-repeat center;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+  &--blue{
+    color: #2F6BFF;
+    border-color: #2F6BFF;
+    transition: all 0.3s ease;
+    &::after{
+      background: url(../../assets/images/main/ico_arrow-blue.svg) no-repeat center;
+      transition: all 0.3s ease;
+    }
+    &:hover{
+      background: #2F6BFF;
+      color: #fff;
+      &::after{
+        background: url(../../assets/images/main/ico_arrow.svg) no-repeat center;
+      }
+    }
+  }
+  &--black{
+    color: #000;
+    border-color: #000;
+    &::after{
+      background: url(../../assets/images/main/ico_arrow-black.svg) no-repeat center;
+    }
+    &:hover{
+      background: #000;
+      color: #fff;
+      &::after{
+        background: url(../../assets/images/main/ico_arrow.svg) no-repeat center;
+      }
+    }
+  }
+
+}
+
+
+.arrow--white-green{
+  &:hover{
+    background: #fff;
+    color: #2E9C9C;
+    &::after{
+      background: url(../../assets/images/main/ico_arrow-green.svg) no-repeat center;
+    }
+  }
+}

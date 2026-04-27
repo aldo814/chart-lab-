@@ -1,0 +1,67 @@
+//// COLOR
+$primary: #014DA1;
+$primary-light: #434BA0;
+$primary-dark:#0D1142;
+$point:#2E9C9C;
+
+//// FONT
+$font-main: 'Pretendard', sans-serif;
+$en-main: 'Montserrat', sans-serif;
+$main-font:#1A1A1A;
+$sub-font:#777777;
+
+
+//// FONT WEIGHT
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+
+//// LINE HEIGHT
+$lh-base: 1.5;
+$lh-title: 1.2;
+
+//// LETTER SPACING
+$ls-tight: -0.02em;
+$ls-normal: 0;
+$ls-wide: 0.02em;
+
+//// LAYOUT
+$inner: 1400px;
+$section-padding: 5.625rem 0;
+$section-padding-m: 4.375rem 0;
+$section-margin: 7.5rem 0;
+$section-margin-m: 4.375rem 0;
+
+//// SPACING
+$gap-sm: .5rem;
+$gap-md: 1rem;
+$gap-lg: 2rem;
+
+//// font size
+$font-body: 1rem;      
+$font-desc: 1.125rem;
+$head-sub: 3rem;
+$font-title: 12.5rem;  
+$font-hero: 6.25rem;   
+
+body{
+  font-family: $font-main;
+}
+
+.inner {
+  max-width: $inner;
+  width:100%;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+.sub-txt{font-size: $font-body;letter-spacing: $ls-tight;line-height: 1.6;color: #777;}
+
+/* 브레이크포인트 변수 */
+
+$smpc:1400px ;$tablet: 1024px; $mobile: 768px; $mini: 480px;
+
+/* 미디어쿼리 믹스인 */
+@mixin smpc { @media (max-width: #{$smpc}) { @content; } }
+@mixin tablet { @media (max-width: #{$tablet}) { @content; } }
+@mixin mobile { @media (max-width: #{$mobile}) { @content; } }
+@mixin mini { @media (max-width: #{$mini}) { @content; } }
