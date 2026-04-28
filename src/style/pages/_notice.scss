@@ -178,6 +178,13 @@
       background: #f5f5f5;
     }
   }
+  //게시글 없을때
+  &__empty{
+   padding: 1.875rem;
+   text-align: center;
+   color: #777;
+   border-bottom: 1px solid #eee; 
+  }
 }
 
 
@@ -362,4 +369,37 @@
 
     }
   }
+}
+
+.skeleton-box {
+  display: inline-block;
+  height: 14px;
+  background: #eee;
+  border-radius: 4px;
+}
+
+.notice__item.skeleton {
+  pointer-events: none;
+
+  .notice__num { width: 40px; }
+  .notice__title { width: 60%; }
+  .notice__author { width: 80px; }
+  .notice__date { width: 100px; }
+}
+
+/* shimmer  */
+.skeleton-box {
+  background: linear-gradient(
+    90deg,
+    #eee 25%,
+    #f5f5f5 37%,
+    #eee 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 0 }
+  100% { background-position: -100% 0 }
 }

@@ -15,20 +15,37 @@ function MainNotice() {
   const swiperRef = useRef(null);
 
   useEffect(() => {
-    client
-      .fetch(`*[_type == "notice"] | order(isPinned desc, createdAt desc)[0..4]`)
-      .then((data) => {
-        setList(data);
-        setTotal(data.length); // 🔥 핵심 (swiper에서 안 구함)
-      });
+    const fetchNotices = async () => {
+      const pinned = await client.fetch(`
+        *[_type == "notice" && isPinned == true]
+        | order(createdAt desc)[0..2] {
+          _id, title, content, createdAt, isPinned,
+          "slug": slug.current
+        }
+      `);
+
+      const pinnedIds = pinned.map((p) => p._id);
+      const normalCount = 6 - pinned.length;
+
+      const normal = await client.fetch(
+        `*[_type == "notice" && isPinned != true && !(_id in $ids)]
+        | order(createdAt desc)[0..$count] {
+          _id, title, content, createdAt, isPinned,
+          "slug": slug.current
+        }`,
+        { ids: pinnedIds, count: normalCount - 1 }
+      );
+
+      const merged = [...pinned, ...normal];
+      setList(merged);
+      setTotal(merged.length);
+    };
+
+    fetchNotices();
   }, []);
-
-
 
   return (
     <div className="notice-swiper">
-
-      {/* 상단 컨트롤 */}
       <div className="notice-swiper__header">
         <button className="notice-prev notice-button" aria-label="이전">
           <CaretLeftIcon size={16} />
@@ -47,7 +64,6 @@ function MainNotice() {
         </button>
       </div>
 
-      {/* 슬라이더 */}
       <Swiper
         modules={[Autoplay, Navigation]}
         slidesPerView={2}
@@ -73,17 +89,14 @@ function MainNotice() {
           <SwiperSlide key={item._id}>
             {({ isActive }) => (
               <Link
-                to="/notice"
-                className={`notice-card ${isActive ? "notice-card--active" : ""
-                  }`}
+                to={`/notice/${item.slug ?? item._id}`}
+                className={`notice-card ${isActive ? "notice-card--active" : ""}`}
               >
                 <span className="notice-card__badge">
                   {item.isPinned ? "공지" : "news"}
                 </span>
 
-                <h3 className="notice-card__title">
-                  {item.title}
-                </h3>
+                <h3 className="notice-card__title">{item.title}</h3>
 
                 <p className="notice-card__desc">
                   {item.content || "내용 준비중입니다."}
@@ -98,7 +111,6 @@ function MainNotice() {
         ))}
       </Swiper>
     </div>
-
   );
 }
 

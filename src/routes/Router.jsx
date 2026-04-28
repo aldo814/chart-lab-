@@ -3,23 +3,18 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import SubLayout from "../layouts/SubLayout";
 
-// Main
 import Main from "../pages/Main";
 
-// About
 import Business from "../pages/About/Business";
 import History from "../pages/About/History";
 import Location from "../pages/About/Location";
 
-// Product
 import Powerchart from "../pages/Product/PowerChart";
 import Powergraphics from "../pages/Product/PowerGraphics";
 
-// Portfolio
 import Project from "../pages/Portfolio/Project";
 import Partner from "../pages/Portfolio/Partner";
 
-// Etc
 import Notice from "../pages/Notice/NoticeList";
 import NoticeView from "../pages/Notice/NoticeView";
 import Contact from "../pages/Contact/Contact";
@@ -29,10 +24,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <MainLayout />,
     children: [
-      // ================= MAIN =================
       { index: true, element: <Main /> },
-
-      // ================= ABOUT =================
       {
         path: "about",
         element: <SubLayout />,
@@ -43,8 +35,6 @@ const router = createBrowserRouter([
           { path: "location", element: <Location /> },
         ],
       },
-
-      // ================= PRODUCT =================
       {
         path: "product",
         element: <SubLayout />,
@@ -54,8 +44,6 @@ const router = createBrowserRouter([
           { path: "powergraphics", element: <Powergraphics /> },
         ],
       },
-
-      // ================= PORTFOLIO =================
       {
         path: "portfolio",
         element: <SubLayout />,
@@ -65,14 +53,12 @@ const router = createBrowserRouter([
           { path: "partner", element: <Partner /> },
         ],
       },
-
-      // ================= ETC =================
       {
         path: "notice",
         element: <SubLayout />,
         children: [
           { index: true, element: <Notice /> },
-          { path: ":id", element: <NoticeView /> },
+          { path: ":slug", element: <NoticeView /> },
         ],
       },
       {

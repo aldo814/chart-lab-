@@ -5,7 +5,6 @@ import SectionTitle from "../../components/SectionTitle";
 import icoDown from "../../assets/images/sub/ico_down.svg";
 import icoNavPrev from "../../assets/images/sub/ico_nav_prev.svg";
 import icoNavNext from "../../assets/images/sub/ico_nav_next.svg";
-import Loading from "../../components/Loading";
 
 function NoticeView() {
   const { slug } = useParams();
@@ -66,7 +65,38 @@ function NoticeView() {
   if (!post) {
     return (
       <div className="notice-view">
-        <Loading />
+        <div className="inner">
+          <div className="notice-view__head">
+            <div
+              className="skeleton-box"
+              style={{ height: "28px", width: "60%", marginBottom: "16px" }}
+            />
+            <div className="notice-view__meta">
+              <div
+                className="skeleton-box"
+                style={{ height: "16px", width: "100px" }}
+              />
+              <div
+                className="skeleton-box"
+                style={{ height: "16px", width: "100px" }}
+              />
+            </div>
+          </div>
+          <div className="notice-view__desc">
+            <div
+              className="skeleton-box"
+              style={{ height: "16px", width: "100%", marginBottom: "8px" }}
+            />
+            <div
+              className="skeleton-box"
+              style={{ height: "16px", width: "90%", marginBottom: "8px" }}
+            />
+            <div
+              className="skeleton-box"
+              style={{ height: "16px", width: "80%" }}
+            />
+          </div>
+        </div>
       </div>
     );
   }
@@ -96,9 +126,7 @@ function NoticeView() {
 
         <div className="notice-view__desc">
           {post.content ? (
-            post.content.split("\n").map((line, i) => (
-              <p key={i}>{line}</p>
-            ))
+            post.content.split("\n").map((line, i) => <p key={i}>{line}</p>)
           ) : (
             <p>내용이 없습니다.</p>
           )}
@@ -132,15 +160,22 @@ function NoticeView() {
         )}
 
         <div className="notice-view__nav">
-          <div className={`notice-view__nav-item notice-view__nav-item--prev${!prevPost ? " notice-view__nav-item--disabled" : ""}`}>
+          <div
+            className={`notice-view__nav-item notice-view__nav-item--prev${!prevPost ? " notice-view__nav-item--disabled" : ""}`}
+          >
             {prevPost ? (
-              <Link to={`/notice/${prevPost.slug}`} className="notice-view__nav-link">
+              <Link
+                to={`/notice/${prevPost.slug}`}
+                className="notice-view__nav-link"
+              >
                 <span className="notice-view__nav-ico">
                   <img src={icoNavPrev} alt="" />
                 </span>
                 <span className="notice-view__nav-text">
                   <span className="notice-view__nav-label">이전글</span>
-                  <span className="notice-view__nav-title">{prevPost.title}</span>
+                  <span className="notice-view__nav-title">
+                    {prevPost.title}
+                  </span>
                 </span>
               </Link>
             ) : (
@@ -150,21 +185,30 @@ function NoticeView() {
                 </span>
                 <span className="notice-view__nav-text">
                   <span className="notice-view__nav-label">이전글</span>
-                  <span className="notice-view__nav-none">이전 글이 없습니다.</span>
+                  <span className="notice-view__nav-none">
+                    이전 글이 없습니다.
+                  </span>
                 </span>
               </div>
             )}
           </div>
 
-          <div className={`notice-view__nav-item notice-view__nav-item--next${!nextPost ? " notice-view__nav-item--disabled" : ""}`}>
+          <div
+            className={`notice-view__nav-item notice-view__nav-item--next${!nextPost ? " notice-view__nav-item--disabled" : ""}`}
+          >
             {nextPost ? (
-              <Link to={`/notice/${nextPost.slug}`} className="notice-view__nav-link">
+              <Link
+                to={`/notice/${nextPost.slug}`}
+                className="notice-view__nav-link"
+              >
                 <span className="notice-view__nav-ico">
                   <img src={icoNavNext} alt="" />
                 </span>
                 <span className="notice-view__nav-text">
                   <span className="notice-view__nav-label">다음글</span>
-                  <span className="notice-view__nav-title">{nextPost.title}</span>
+                  <span className="notice-view__nav-title">
+                    {nextPost.title}
+                  </span>
                 </span>
               </Link>
             ) : (
@@ -174,7 +218,9 @@ function NoticeView() {
                 </span>
                 <span className="notice-view__nav-text">
                   <span className="notice-view__nav-label">다음글</span>
-                  <span className="notice-view__nav-none">다음 글이 없습니다.</span>
+                  <span className="notice-view__nav-none">
+                    다음 글이 없습니다.
+                  </span>
                 </span>
               </div>
             )}
@@ -184,7 +230,13 @@ function NoticeView() {
         <div className="notice-view__actions">
           <button
             className="notice-view__btn notice-view__btn--list"
-            onClick={() => navigate("/notice")}
+            onClick={() => {
+              if (window.history.length > 1) {
+                navigate(-1);
+              } else {
+                navigate("/notice");
+              }
+            }}
           >
             목록
           </button>
