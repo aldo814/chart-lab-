@@ -1,5 +1,12 @@
 @font-face {
   font-family: 'Pretendard';
+  src: url('/fonts/Pretendard-subset/Pretendard-Thin.subset.woff2') format('woff2');
+  font-weight: 100;
+}
+
+
+@font-face {
+  font-family: 'Pretendard';
   src: url('/fonts/Pretendard-subset/Pretendard-Light.subset.woff2') format('woff2');
   font-weight: 300;
 }
@@ -18,48 +25,54 @@
 
 @font-face {
   font-family: 'Pretendard';
+  src: url('/fonts/Pretendard-subset/Pretendard-SemiBold.subset.woff2') format('woff2');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Pretendard';
   src: url('/fonts/Pretendard-subset/Pretendard-Bold.woff2') format('woff2');
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-subset/Montserrat-Thin.subset.woff2') format('woff2');
+  src: url('/fonts/Montserrat/Montserrat-Thin.subset.woff2') format('woff2');
   font-weight: 100;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-subset/Montserrat-ExtraLight.subset.woff2') format('woff2');
+  src: url('/fonts/Montserrat/Montserrat-ExtraLight.subset.woff2') format('woff2');
   font-weight: 200;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-subset/Montserrat-Light.subset.woff2') format('woff2');
+  src: url('/fonts/Montserrat/Montserrat-Light.subset.woff2') format('woff2');
   font-weight: 300;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-subset/Montserrat-Regular.subset.woff2') format('woff2');
+  src: url('/fonts/Montserrat/Montserrat-Regular.subset.woff2') format('woff2');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-subset/Montserrat-Medium.subset.woff2') format('woff2');
+  src: url('/fonts/Montserrat/Montserrat-Medium.subset.woff2') format('woff2');
   font-weight: 500;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-subset/Montserrat-SemiBold.subset.woff2') format('woff2');
+  src: url('/fonts/Montserrat/Montserrat-SemiBold.subset.woff2') format('woff2');
   font-weight: 600;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-subset/Montserrat-Bold.subset.woff2') format('woff2');
+  src: url('/fontsMontserrat/Montserrat-Bold.subset.woff2') format('woff2');
   font-weight: 700;
 }
