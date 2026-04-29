@@ -1,4 +1,3 @@
-// NoticeView.jsx
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { client } from "../../api/sanity";
@@ -15,7 +14,7 @@ const urlFor = (source) => builder.image(source);
 const portableTextComponents = {
   types: {
     image: ({ value }) => {
-      if (!value?.asset?._ref) return null;
+      if (!value?.asset) return null;
       return (
         <figure className="notice-view__content-image">
           <img
@@ -81,10 +80,7 @@ function NoticeView() {
           isPinned,
           content[]{
             ...,
-            _type == "image" => {
-              ...,
-              asset->
-            }
+            asset->
           },
           "authorName": author->name,
           "files": attachment[].asset->{
@@ -203,7 +199,7 @@ function NoticeView() {
           )}
         </div>
 
-        {Array.isArray(post.files) && post.files.length > 0 && (
+        {/* {Array.isArray(post.files) && post.files.length > 0 && (
           <div className="notice-view__attach">
             <p className="notice-view__attach-title">첨부파일</p>
             <ul className="notice-view__attach-list">
@@ -227,7 +223,7 @@ function NoticeView() {
               ))}
             </ul>
           </div>
-        )}
+        )} */}
 
         <div className="notice-view__nav">
           <div className="notice-view__nav-item notice-view__nav-item--prev">
@@ -277,15 +273,12 @@ function NoticeView() {
 
           <div className="notice-view__nav-item notice-view__nav-item--next">
             {loadingNav ? (
-              <div className="notice-view__nav-link">
-                <div
-                  className="skeleton-box"
-                  style={{ width: 24, height: 24 }}
-                />
-                <div>
+              <div className="notice-view__nav-link--skeleton">
+                <div className="skeleton-box notice-view__nav-ico--skeleton" />
+                <div className="notice-view__nav-text--skeleton">
                   <div
                     className="skeleton-box"
-                    style={{ width: 60, height: 14, marginBottom: 6 }}
+                    style={{ width: 60, height: 14 }}
                   />
                   <div
                     className="skeleton-box"
