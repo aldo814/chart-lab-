@@ -84,6 +84,16 @@
     .gnb__link {
       color: #000;
     }
+
+    .header__menu-btn span {
+      background: #000;
+    }
+  }
+
+  &.is-scroll.m_open {
+    .header__menu-btn span {
+      background: #FFFBF2;
+    }
   }
 
   &.is-hover {
@@ -220,6 +230,8 @@
       z-index: 55;
       padding-top: 1.25rem;
       height: calc(100vh - 60px);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       opacity: 0;
       pointer-events: none;
       transform: translateY(-20px);
@@ -341,6 +353,24 @@
 
     .header__nav-bg {
       display: none;
+    }
+  }
+}
+
+@include mobile {
+  .header {
+    &__inner {
+      padding: 0 16px;
+    }
+
+    .gnb {
+      .gnb__item {
+        padding: 0 16px;
+      }
+
+      .gnb__link {
+        padding: 1.25rem .5rem;
+      }
     }
   }
 }

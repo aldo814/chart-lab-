@@ -1,13 +1,48 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/images/common/logo.svg";
 
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
+  const { pathname } = useLocation();
 
   const headerRef = useRef(null);
   const navBgRef = useRef(null);
+
+  const syncHeaderScroll = () => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    const wrapperEl = document.querySelector(".wrapper");
+    const mainEl = document.querySelector(".main-page");
+    const isScrolled =
+      window.scrollY > 50 ||
+      document.documentElement.scrollTop > 50 ||
+      (wrapperEl && wrapperEl.scrollTop > 50) ||
+      (mainEl && mainEl.scrollTop > 50);
+
+    header.classList.toggle("is-scroll", Boolean(isScrolled));
+  };
+
+  useEffect(() => {
+    setMobileOpen(false);
+    setOpenMenu(null);
+    const header = headerRef.current;
+    const navBg = navBgRef.current;
+
+    if (header) {
+      header.classList.remove("is-hover");
+      header.style.setProperty("--li-expand-height", "100%");
+    }
+
+    if (navBg) {
+      navBg.style.height = "0";
+      navBg.style.opacity = "0";
+    }
+
+    requestAnimationFrame(syncHeaderScroll);
+  }, [pathname]);
 
   useEffect(() => {
     const header = headerRef.current;
@@ -60,16 +95,6 @@ function Header() {
     const header = headerRef.current;
     if (!header) return;
 
-    const checkScroll = () => {
-      const windowScrolled =
-        window.scrollY > 50 || document.documentElement.scrollTop > 50;
-      if (windowScrolled) {
-        header.classList.add("is-scroll");
-      } else {
-        header.classList.remove("is-scroll");
-      }
-    };
-
     const handleScroll = (e) => {
       const target = e.target;
       const windowScrolled =
@@ -95,7 +120,7 @@ function Header() {
     };
 
     window.addEventListener("scroll", handleScroll, true);
-    checkScroll();
+    syncHeaderScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll, true);
@@ -107,6 +132,27 @@ function Header() {
     setOpenMenu(openMenu === idx ? null : idx);
   };
 
+  const handleMobileClose = () => {
+    if (window.innerWidth > 1024) return;
+    setMobileOpen(false);
+    setOpenMenu(null);
+    const header = headerRef.current;
+    if (header) {
+      header.classList.remove("is-hover");
+    }
+    requestAnimationFrame(syncHeaderScroll);
+  };
+
+  const handleMenuButtonClick = () => {
+    setMobileOpen((prev) => {
+      if (prev) {
+        setOpenMenu(null);
+        requestAnimationFrame(syncHeaderScroll);
+      }
+      return !prev;
+    });
+  };
+
   return (
     <header
       className={`header ${mobileOpen ? "m_open" : ""}`}
@@ -115,7 +161,7 @@ function Header() {
     >
       <div className="header__inner">
         <h1 className="header__logo logo">
-          <Link to="/">
+          <Link to="/" onClick={handleMobileClose}>
             <img src={logo} alt="차트연구소" />
           </Link>
         </h1>
@@ -128,13 +174,19 @@ function Header() {
               </div>
               <ul className="gnb__depth2">
                 <li>
-                  <Link to="/about/business">사업 소개</Link>
+                  <Link to="/about/business" onClick={handleMobileClose}>
+                    사업 소개
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/about/history">연혁</Link>
+                  <Link to="/about/history" onClick={handleMobileClose}>
+                    연혁
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/about/location">오시는 길</Link>
+                  <Link to="/about/location" onClick={handleMobileClose}>
+                    오시는 길
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -145,10 +197,14 @@ function Header() {
               </div>
               <ul className="gnb__depth2">
                 <li>
-                  <Link to="/product/powerchart">파워차트</Link>
+                  <Link to="/product/powerchart" onClick={handleMobileClose}>
+                    파워차트
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/product/powergraphics">파워그래픽스</Link>
+                  <Link to="/product/powergraphics" onClick={handleMobileClose}>
+                    파워그래픽스
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -159,13 +215,19 @@ function Header() {
               </div>
               <ul className="gnb__depth2">
                 <li>
-                  <Link to="/portfolio/project">프로젝트 사례</Link>
+                  <Link to="/portfolio/project" onClick={handleMobileClose}>
+                    프로젝트 사례
+                  </Link>
                 </li>
               </ul>
             </li>
 
             <li className="gnb__item">
-              <Link to="/notice" className="gnb__link">
+              <Link
+                to="/notice"
+                className="gnb__link"
+                onClick={handleMobileClose}
+              >
                 공지사항
               </Link>
               {!mobileOpen && (
@@ -178,7 +240,11 @@ function Header() {
             </li>
 
             <li className="gnb__item">
-              <Link to="/contact" className="gnb__link">
+              <Link
+                to="/contact"
+                className="gnb__link"
+                onClick={handleMobileClose}
+              >
                 상담문의
               </Link>
               {!mobileOpen && (
@@ -194,7 +260,7 @@ function Header() {
 
         <button
           className={`header__menu-btn menu-btn ${mobileOpen ? "active" : ""}`}
-          onClick={() => setMobileOpen(!mobileOpen)}
+          onClick={handleMenuButtonClick}
         >
           <span />
           <span />

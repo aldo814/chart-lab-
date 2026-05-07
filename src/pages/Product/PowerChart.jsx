@@ -4,14 +4,13 @@ import Button from "../../components/Button";
 import img01 from "../../assets/images/sub/img_hts01.png";
 
 const PowerChart = () => {
-
   // 주요 기능
   const mainItem = {
     img: img01,
     features: [
       {
-        title: "업계 최다 수준의 분석 수식 DB",
-        desc: "지표 230종, 시그널 160종, 구간 70종, 패턴 70종, 추세선 60종, 매매전략 50종",
+        title: "업계 최다 수준의 수식 DB",
+        desc: "지표 250종, 시그널 160종, 구간 70종, 채움, 패턴 70종, 추세선 60종, 매매전략 50종",
       },
       {
         title: "사용자 수식 제작 환경",
@@ -31,27 +30,33 @@ const PowerChart = () => {
       },
       {
         title: "특수차트",
-        desc: "매매복기, MarketProfile, 언론차트, MarketMap 등",
+        desc: "매매복기, 전광판 차트, 언론에 소개된 홍보용 차트, MarketMap 등",
       },
       {
         title: "유연한 데이터 연동",
         desc: "Excel, Image, HTML, PDF 등 다양한 포맷 지원",
       },
+      {
+        title: "20종의 다양한 폼 그래프 및 폼 차트",
+      },
     ],
   };
 
-  // 추가 특징 
+  // 추가 특징
   const subItem = {
     img: img01,
     features: [
       {
-        title: "FastLight Drawing 기법 기반의 고성능 렌더링"
+        title: "FastLight Drawing 기법 기반의 고성능 드로잉",
       },
       {
         title: "선물 만기 틱차트 환경에서도 안정적인 퍼포먼스",
       },
       {
         title: "강력한 분할 프레임 및 차트 간 동기화",
+      },
+      {
+        title: "업계 최초 MTS와 속성 설정 저장 및 연동",
       },
       {
         title: "초급자·고급자 모드 분리로 폭넓은 사용자층 수용",
@@ -64,25 +69,20 @@ const PowerChart = () => {
 
   return (
     <div className="product">
-
       <SectionTitle
         variant="center"
         centerTop="금융 현장에서 완성된 통합 차트 솔루션"
         title="파워차트 - HTS"
-        desc="파워차트 2.5는 국내 주요 증권사·선물사·은행의 실무 환경에서 검증된 HTS 차트 시스템입니다. <br>230여 종에 이르는 분석 지표, 실시간 이벤트 감시, 시스템 트레이딩 기능을<br> 하나의 엔진 위에 구현해 전문 트레이더의 고도화된 분석 니즈에 응답합니다."
+        desc="파워차트 2.5는 국내 주요 증권사·선물사·은행의 실무에서 검증된 HTS 차트 시스템입니다.
+        250종에 이르는 분석 지표, 시스템 트레이딩, 신호, 구간, 채움, 패턴, 추세선 기능을
+        활용해서 급변하는 주식 장세에 수익을 극대화 할 수 있는 분석 환경을 제공합니다."
       />
 
       {/* ===== 주요 기능 ===== */}
       <div className="product__inner inner">
-
-        <SectionTitle
-          variant="sub"
-          en="CORE FEATURE"
-          title="주요 기능"
-        />
+        <SectionTitle variant="sub" en="CORE FEATURE" title="주요 기능" />
 
         <div className="product__item">
-
           <div className="product__img">
             <img src={mainItem.img} alt="" />
           </div>
@@ -101,23 +101,15 @@ const PowerChart = () => {
               </li>
             ))}
           </ul>
-
         </div>
       </div>
 
       {/* ===== 추가 특징 ===== */}
       <div className="product__extra">
-
         <div className="product__inner inner">
-
-          <SectionTitle
-            variant="sub"
-            en="more FEATURE"
-            title="추가 특징"
-          />
+          <SectionTitle variant="sub" en="more FEATURE" title="추가 특징" />
 
           <div className="product__item">
-
             <div className="product__img">
               <img src={subItem.img} alt="" />
             </div>
@@ -136,32 +128,27 @@ const PowerChart = () => {
                 </li>
               ))}
             </ul>
-
           </div>
-
         </div>
       </div>
 
-    {/* ===== 문의하기 CTA ===== */}
-<div className="product__cta">
-  <div className="product__inner inner">
+      {/* ===== 문의하기 CTA ===== */}
+      <div className="product__cta">
+        <div className="product__inner inner">
+          <p className="product__cta-text">
+            지금 바로 HTS 솔루션을 <br></br>
+            <strong>경험해보세요</strong>
+          </p>
 
-    <p className="product__cta-text">
-      지금 바로 HTS 솔루션을 <br></br>
-      <strong>경험해보세요</strong>
-    </p>
-
-    <Button
-      variant="arrow-white-green"
-      to="/contact"
-      className="product__cta-btn"
-    >
-      문의하기
-    </Button>
-
-  </div>
-</div>
-
+          <Button
+            variant="arrow-white-green"
+            to="/contact"
+            className="product__cta-btn"
+          >
+            문의하기
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };

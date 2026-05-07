@@ -208,6 +208,7 @@
         align-items: center;
         gap: .9375rem;
         font-size: $font-desc;
+        font-weight: 500;
 
         strong {
           font-weight: 500;
@@ -267,9 +268,11 @@
 
     // 연혁
     .sub-history__list {
+      flex: 1;
       .sub-history__item {
         display: flex;
         padding-bottom: 3.75rem;
+       
 
         .sub-history__year {
           padding-top: 2.1875rem;
@@ -294,6 +297,44 @@
         }
       }
     }
+  }
+
+  // 연혁 탭
+
+  .sub-history__timeline-inner{
+    display: flex;
+    gap: 4.375rem;
+
+    .sub-history__tabs{
+      position: relative;
+
+      .sub-history__tab-list{
+        position: sticky;
+        top: 90px;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        li{
+          .sub-history__tab-item{
+            font-family: $en-main;
+            color: #aaa;
+            font-size: 3.75rem;
+            transition: all 0.3s;
+            &.is-active{
+              color: $primary;
+              font-weight: 600;
+            }
+
+            &:hover{
+              color: $primary;
+            }
+
+          }
+        }
+      }
+    }
+
   }
 
 
@@ -446,4 +487,485 @@
     }
   }
 
+}
+
+@include tablet {
+  .sub-wrapper--about {
+    .sub-business {
+      &__intro {
+        padding: 3rem;
+        margin-bottom: 5rem;
+
+        .business__title {
+          font-size: 2rem;
+        }
+
+        .sub-business__desc {
+          font-size: 1.125rem;
+        }
+      }
+
+      &__outro {
+        margin-top: 5rem;
+        padding: 4rem 0;
+
+        &-text {
+          font-size: 2rem;
+        }
+      }
+
+      .sub-business__list {
+        gap: 3rem;
+
+        .sub-business__item,
+        .sub-business__item:nth-child(even) {
+          flex-direction: column;
+
+          .sub-business__content {
+            align-items: flex-start;
+            text-align: left;
+
+            .dot-list,
+            .sub-business__head {
+              align-items: flex-start;
+            }
+          }
+        }
+
+        .sub-business__item {
+          > div {
+            border-radius: 1.75rem;
+          }
+        }
+      }
+    }
+
+    .sub-history {
+      .sub-history__ceo {
+        &-inner {
+          gap: 3rem;
+        }
+
+        &-text,
+        &-image {
+          flex-basis: 50%;
+          max-width: 50%;
+        }
+
+        &-title {
+          font-size: 2rem;
+        }
+      }
+
+      .sub-history__bridge {
+        margin: 5rem 0;
+        padding: 4rem 0;
+
+        &::before {
+          background-attachment: scroll;
+        }
+
+        &-text {
+          font-size: 2rem;
+        }
+      }
+
+      .sub-history__item {
+        gap: 2rem;
+
+        .sub-history__year {
+          width: 10rem;
+        }
+      }
+    }
+
+    .sub-history__timeline-inner {
+      flex-direction: column;
+      gap: 2rem;
+
+      .sub-history__tabs {
+        .sub-history__tab-list {
+          position: static;
+          flex-direction: row;
+          overflow-x: auto;
+          padding-bottom: .5rem;
+
+          li .sub-history__tab-item {
+            font-size: 2.5rem;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+
+    .sub-location {
+      .sub-location__info-text {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 100%;
+      }
+
+      &__contact {
+        padding-left: 0;
+        margin-top: 2rem;
+      }
+
+      &__transport {
+        margin: 5rem 0;
+      }
+    }
+  }
+}
+
+@include mobile {
+  .sub-wrapper--about {
+    .sub-business {
+      &__intro {
+        padding: 2rem 1.5rem;
+        border-left-width: 5px;
+        margin-bottom: 3.5rem;
+
+        .business__title {
+          font-size: 1.625rem;
+          letter-spacing: -0.05rem;
+        }
+
+        .sub-business__desc {
+          font-size: 1rem;
+        }
+      }
+
+      &__outro {
+        margin-top: 3.5rem;
+        padding: 3rem 0;
+
+        &-text {
+          font-size: 1.5rem;
+          letter-spacing: -0.05rem;
+        }
+      }
+
+      .sub-business__list {
+        .sub-business__item {
+          > div {
+            border-radius: 1.25rem;
+          }
+
+          .sub-business__content {
+            padding: 1.5rem;
+
+            .sub-business__head {
+              .sub-business__title {
+                align-items: flex-start;
+                font-size: 1.375rem;
+
+                .sub-business__num {
+                  font-size: 2rem;
+                }
+              }
+
+              .sub-business__desc {
+                font-size: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .sub-history {
+      .sub-history__ceo {
+        &-inner {
+          flex-direction: column-reverse;
+          gap: 2rem;
+        }
+
+        &-text,
+        &-image {
+          flex-basis: auto;
+          max-width: 100%;
+        }
+
+        &-title {
+          font-size: 1.625rem;
+        }
+
+        &-desc {
+          font-size: 1rem;
+        }
+      }
+
+      .sub-history__bridge {
+        margin: 3.5rem 0;
+        padding: 3rem 0;
+
+        &-text {
+          font-size: 1.5rem;
+        }
+      }
+
+      .sub-history__item {
+        flex-direction: column;
+        gap: 0;
+        padding-bottom: 2.5rem;
+
+        .sub-history__year {
+          width: 100%;
+          padding-top: 1.25rem;
+          font-size: 1.5rem;
+        }
+
+        .sub-history__list {
+          padding-top: 1rem;
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .sub-history__timeline-inner {
+      .sub-history__tabs .sub-history__tab-list li .sub-history__tab-item {
+        font-size: 2rem;
+      }
+    }
+
+    .sub-location {
+      .sub-location__info-text {
+        padding: 1.75rem;
+      }
+
+      &__contact {
+        &-item {
+          align-items: flex-start;
+        }
+
+        &-icon {
+          width: 3.25rem;
+          height: 3.25rem;
+        }
+
+        &-value {
+          font-size: 1.125rem;
+        }
+      }
+
+      &__transport {
+        margin: 3.5rem 0;
+
+        &-item {
+          align-items: flex-start;
+          padding: 1.25rem 0;
+        }
+
+        &-icon {
+          width: 3rem;
+          height: 3rem;
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+}
+
+/* Business image visibility fix */
+@include tablet {
+  .sub-wrapper--about {
+    .sub-business {
+      .sub-business__list {
+        .sub-business__item {
+          .sub-business__img {
+            flex: 0 0 auto;
+            width: 100%;
+            height: 320px;
+            min-height: 320px;
+            background: #f5f7fb;
+            overflow: hidden;
+
+            img {
+              display: block;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .sub-wrapper--about {
+    .sub-business {
+      .sub-business__list {
+        .sub-business__item {
+          .sub-business__img {
+            height: 240px;
+            min-height: 240px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Browser comment responsive fixes */
+@include tablet {
+  .sub-wrapper--about {
+    .sub-history {
+      .sub-history__ceo {
+        &-image {
+          height: 400px;
+
+          img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .sub-wrapper--about {
+    .sub-history {
+      .sub-history__ceo {
+        &-image {
+          height: 400px;
+        }
+      }
+
+      .sub-history__item {
+        flex-direction: row !important;
+        gap: 1rem;
+        align-items: stretch;
+        padding-bottom: 2rem;
+
+        .sub-history__year {
+          width: 6.5rem;
+          flex: 0 0 6.5rem;
+          padding-top: 1rem;
+          font-size: 1.5rem;
+        }
+
+        .sub-history__list {
+          flex: 1 1 auto;
+          min-width: 0;
+          padding-top: 1rem;
+        }
+      }
+    }
+  }
+}
+
+/* Typography tuning */
+.sub-wrapper--about {
+  .sub-business {
+    &__intro {
+      .business__title {
+        font-size: 2.125rem;
+      }
+
+      .sub-business__desc {
+        font-size: 1.125rem;
+      }
+    }
+
+    &__outro-text {
+      font-size: 2.25rem;
+    }
+
+    .sub-business__list {
+      .sub-business__item {
+        .sub-business__content {
+          .sub-business__head {
+            .sub-business__title {
+              font-size: 1.5rem;
+            }
+
+            .sub-business__desc {
+              font-size: 1.125rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sub-history {
+    .sub-history__ceo-title,
+    .sub-history__bridge-text {
+      font-size: 2.125rem;
+    }
+  }
+
+  .sub-history__timeline-inner {
+    .sub-history__tabs {
+      .sub-history__tab-list {
+        li .sub-history__tab-item {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+}
+
+@include tablet {
+  .sub-wrapper--about {
+    .sub-business {
+      &__intro .business__title,
+      &__outro-text {
+        font-size: 1.75rem;
+      }
+    }
+
+    .sub-history {
+      .sub-history__ceo-title,
+      .sub-history__bridge-text {
+        font-size: 1.75rem;
+      }
+    }
+
+    .sub-history__timeline-inner {
+      .sub-history__tabs {
+        .sub-history__tab-list {
+          li .sub-history__tab-item {
+            font-size: 2.25rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .sub-wrapper--about {
+    .sub-business {
+      &__intro .business__title,
+      &__outro-text {
+        font-size: 1.375rem;
+      }
+
+      .sub-business__list {
+        .sub-business__item {
+          .sub-business__content {
+            .sub-business__head {
+              .sub-business__title {
+                font-size: 1.25rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .sub-history {
+      .sub-history__ceo-title,
+      .sub-history__bridge-text {
+        font-size: 1.375rem;
+      }
+    }
+  }
 }

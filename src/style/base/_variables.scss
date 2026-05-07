@@ -48,6 +48,22 @@ body{
   font-family: $font-main;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
 .inner {
   max-width: $inner;
   width:100%;

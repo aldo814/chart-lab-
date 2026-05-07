@@ -4,17 +4,15 @@ import Button from "../../components/Button";
 import img01 from "../../assets/images/sub/img_hts01.png";
 
 const PowerGraphics = () => {
-
   const mainItem = {
     img: img01,
     features: [
       {
-        title: "HTS급 분석 수식 DB",
+        title: "HTS급 분석 수식",
         desc: "지표 250종, 신호 160종, 구간 70종, 패턴 120종, 채움 50종",
       },
       {
         title: "17종의 차트 유형 및 40여종의 추세선",
-        desc: "",
       },
       {
         title: "추세선 매매",
@@ -26,11 +24,9 @@ const PowerGraphics = () => {
       },
       {
         title: "비교 차트, 폼차트·폼그래프(약 30여종)",
-        desc: "",
       },
       {
         title: "HTS ↔ MTS 차트 설정 연동",
-        desc: "",
       },
     ],
   };
@@ -42,7 +38,7 @@ const PowerGraphics = () => {
         title: "다년간 차트 개발 경험이 집약된 모바일 전용 엔진",
       },
       {
-        title: "업계 최초 HTS ↔ MTS DB 및 속성 호환 — Android ↔ iOS 속성까지 호환",
+        title: "업계 최초 HTS ↔ MTS 속성 호환 — Android ↔ iOS 속성까지 호환",
       },
       {
         title: "App 내 다크 모드 완전 지원 — 시스템 설정과 독립적으로 동작",
@@ -58,24 +54,19 @@ const PowerGraphics = () => {
 
   return (
     <div className="product">
-
       <SectionTitle
         variant="center"
         centerTop="HTS의 분석력, 모바일의 경험으로"
         title="파워그래픽스 - MTS"
-        desc="파워그래픽스 3.0은 다년간 쌓아온 차트 개발 역량을 모바일 환경에 맞게 재설계한 분석 솔루션입니다. <br>HTS의 수식 DB와 사용자 설정을 그대로 이어받을 수 있는 업계 최초의 HTS<br>↔ MTS 연동 구조를 바탕으로, Android와 iOS에서 일관된 분석 경험을 제공합니다."
+        desc="파워그래픽스 3.0은 다년간 쌓아온 차트 개발 역량을 모바일 환경에 맞게 재설계한
+        솔루션입니다. HTS의 설정을 연동할 수 있는 업계 최초의 HTS ↔ MTS 연동 구조를
+        바탕으로, Android와 iOS에서 일관된 분석 경험을 제공합니다."
       />
 
       <div className="product__inner inner">
-
-        <SectionTitle
-          variant="sub"
-          en="CORE FEATURE"
-          title="주요 기능"
-        />
+        <SectionTitle variant="sub" en="CORE FEATURE" title="주요 기능" />
 
         <div className="product__item">
-
           <div className="product__img">
             <img src={mainItem.img} alt="" />
           </div>
@@ -94,22 +85,14 @@ const PowerGraphics = () => {
               </li>
             ))}
           </ul>
-
         </div>
       </div>
 
       <div className="product__extra">
-
         <div className="product__inner inner">
-
-          <SectionTitle
-            variant="sub"
-            en="more FEATURE"
-            title="핵심 강점"
-          />
+          <SectionTitle variant="sub" en="more FEATURE" title="핵심 강점" />
 
           <div className="product__item">
-
             <div className="product__img">
               <img src={subItem.img} alt="" />
             </div>
@@ -128,15 +111,12 @@ const PowerGraphics = () => {
                 </li>
               ))}
             </ul>
-
           </div>
-
         </div>
       </div>
 
       <div className="product__cta">
         <div className="product__inner inner">
-
           <p className="product__cta-text">
             지금 바로 MTS 솔루션을 <br></br>
             <strong>경험해보세요</strong>
@@ -149,10 +129,8 @@ const PowerGraphics = () => {
           >
             문의하기
           </Button>
-
         </div>
       </div>
-
     </div>
   );
 };

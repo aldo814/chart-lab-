@@ -59,8 +59,10 @@
     border-top: 2px solid #000;
   }
   &__item{
-    display: flex;
-    padding: 1.25rem 0;
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1fr) 140px;
+    gap: 1rem;
+    padding: 1.125rem 0;
     border-bottom: 1px solid #eee;
     align-items: center;
     &--pinned{
@@ -90,7 +92,21 @@
     display: flex;
     align-items: center;
     gap: .625rem;
-    flex: 1 1;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+
+    &-text {
+      min-width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .notice__attach-ico,
+    .notice__badge--new {
+      flex-shrink: 0;
+    }
   }
   .notice__badge--new{
     color: $primary;
@@ -107,6 +123,8 @@
   }
   &__date{
     width: 140px;
+    justify-self: end;
+    white-space: nowrap;
   }
   &__pagination{
     margin-top: 4.375rem;
@@ -186,7 +204,7 @@
   &__head{
     border-top: 2px solid #000;
     border-bottom: 1px solid #eee;
-    padding: 2.5rem 0;
+    padding: 1.75rem 0;
   }
   &__title{
     font-size: 2.25rem;
@@ -196,7 +214,7 @@
     word-break: keep-all;
   }
   &__meta{
-    margin-top: 1.875rem;
+    margin-top: 1.25rem;
     display: flex;
     align-items: center;
     &-item{
@@ -221,7 +239,7 @@
     }
   }
   &__desc{
-    padding: 2.5rem 0;
+    padding: 2rem 0;
     line-height: 140%;
     font-size: 1rem;
   }
@@ -424,4 +442,193 @@
 @keyframes shimmer {
   0% { background-position: 100% 0 }
   100% { background-position: -100% 0 }
+}
+
+@include tablet {
+  .notice {
+    &__search {
+      padding: 2rem;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    &__input {
+      max-width: none;
+      width: calc(100% - 154px);
+    }
+
+    &__search-btn {
+      width: 100%;
+    }
+
+    &__item {
+      grid-template-columns: 4rem minmax(0, 1fr) 7rem;
+      align-items: center;
+      gap: .75rem;
+      padding: 1.25rem;
+    }
+
+    &__num {
+      justify-content: center;
+      width: 4rem;
+      min-width: 0;
+    }
+
+    &__title {
+      min-width: 0;
+    }
+
+    &__date {
+      width: 7rem;
+      font-size: .875rem;
+    }
+
+    &__pagination {
+      margin-top: 3rem;
+      gap: .5rem;
+    }
+
+    &__page-list {
+      gap: .25rem;
+      margin: 0;
+    }
+  }
+
+  .notice-view {
+    .inner {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__head {
+      padding: 1.5rem 0;
+    }
+
+    &__title {
+      font-size: 1.875rem;
+    }
+
+    &__nav {
+      flex-direction: column;
+      order: 2;
+      margin-top: 1.25rem;
+    }
+
+    &__actions {
+      order: 1;
+      margin-top: 2rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@include mobile {
+  .notice {
+    &__search {
+      padding: 1.25rem;
+      flex-direction: column;
+    }
+
+    &__select,
+    &__input,
+    &__search-btn {
+      width: 100%;
+    }
+
+    &__total {
+      margin-top: 2rem;
+      font-size: 1rem;
+    }
+
+    &__item {
+      grid-template-columns: 2.75rem minmax(0, 1fr) 5.75rem;
+      gap: .5rem;
+      padding: .875rem 0;
+    }
+
+    &__title {
+      line-height: 1.5;
+    }
+
+    &__num {
+      width: 2.75rem;
+      font-size: .9375rem;
+
+      .notice__badge {
+        padding: .25rem .5rem;
+        font-size: .75rem;
+      }
+    }
+
+    &__date {
+      width: 5.75rem;
+      font-size: .8125rem;
+    }
+
+    &__pagination {
+      overflow-x: auto;
+      justify-content: center;
+      padding-bottom: .5rem;
+    }
+  }
+
+  .notice-view {
+    &__head {
+      padding: 1.25rem 0;
+    }
+
+    &__title {
+      font-size: 1.5rem;
+      letter-spacing: -0.05rem;
+      line-height: 1.45;
+    }
+
+    &__meta {
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      gap: .75rem 0;
+    }
+
+    &__attach {
+      padding: 1.5rem;
+
+      &-list {
+        flex-direction: column;
+        gap: .75rem;
+      }
+    }
+
+    &__nav-link,
+    &__nav-link--skeleton {
+      padding: 1.25rem;
+    }
+
+    &__nav-ico {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    &__actions {
+      margin-bottom: 0;
+    }
+
+    &__btn--list {
+      width: 100%;
+    }
+  }
+}
+
+/* Typography tuning */
+.notice-view {
+  &__title {
+    font-size: 1.875rem;
+  }
+}
+
+@include mobile {
+  .notice-view {
+    &__title {
+      font-size: 1.375rem;
+    }
+  }
 }

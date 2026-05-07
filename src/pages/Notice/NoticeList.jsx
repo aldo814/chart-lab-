@@ -135,7 +135,6 @@ function NoticeList() {
               <div className="notice__item skeleton" key={i}>
                 <span className="notice__num skeleton-box" />
                 <span className="notice__title skeleton-box" />
-                <span className="notice__author skeleton-box" />
                 <span className="notice__date skeleton-box" />
               </div>
             ))}
@@ -152,16 +151,13 @@ function NoticeList() {
                   <em className="notice__badge">공지</em>
                 </span>
                 <span className="notice__title">
-                  {item.title}
+                  <span className="notice__title-text">{item.title}</span>
                   {isNew(item.createdAt) && (
                     <em className="notice__badge notice__badge--new">NEW</em>
                   )}
                   {item.hasAttachment && (
                     <PaperclipIcon size={14} className="notice__attach-ico" />
                   )}
-                </span>
-                <span className="notice__author">
-                  {item.authorName || "관리자"}
                 </span>
                 <span className="notice__date">
                   {item.createdAt?.slice(0, 10).replaceAll("-", ".")}
@@ -179,13 +175,10 @@ function NoticeList() {
                   {filteredNormal.length - (start + idx)}
                 </span>
                 <span className="notice__title">
-                  {item.title}
+                  <span className="notice__title-text">{item.title}</span>
                   {item.hasAttachment && (
                     <PaperclipIcon size={14} className="notice__attach-ico" />
                   )}
-                </span>
-                <span className="notice__author">
-                  {item.authorName || "관리자"}
                 </span>
                 <span className="notice__date">
                   {item.createdAt?.slice(0, 10).replaceAll("-", ".")}
