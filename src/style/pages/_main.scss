@@ -98,7 +98,7 @@
           background: #000;
           z-index: -1;
           background-repeat: no-repeat;
-          background-size: cover !important;
+          background-size: cover;
           animation: zoomIn 2s;
           transform-origin: center center;
         }
@@ -569,7 +569,7 @@
   }
 
   .section--info {
-    background: #fff !important;
+    background: #fff;
     flex-direction: column;
     justify-content: space-between;
     height: auto;
@@ -972,7 +972,7 @@
     height: auto;
     min-height: 100vh;
     overflow-y: visible;
-    scroll-snap-type: none !important;
+    scroll-snap-type: none;
 
     .section {
       height: auto;
@@ -1002,7 +1002,7 @@
           height: 100vh;
           min-height: 38rem;
           padding-bottom: 9rem;
-          justify-content: flex-end;
+          justify-content:center;
         }
 
         .hero-cont__title { font-size: 3rem; }
@@ -1130,7 +1130,7 @@
             padding-bottom: 8rem;
           }
 
-          &::before { background-position: center !important; }
+          &::before { background-position: center; }
         }
 
         .hero-cont__title { font-size: 2.25rem; }
@@ -1158,7 +1158,7 @@
 
       &--product {
         .product-item {
-          > div { border-radius: 1.25rem; }
+          > div { border-radius: 1.25rem ; }
 
           &__box {
             > * { padding: 1.5rem; }
@@ -1166,14 +1166,13 @@
             .title {
               margin-bottom: 1.25rem;
 
-              .en { font-size: 1rem; }
-              .kr { font-size: 1.5rem; }
-              .desc { font-size: 1rem; }
+              .en { font-size: .875rem; }
+              .kr { font-size: 1.25rem; }
+              .desc { font-size: .9375rem; }
             }
 
             .ico-list li {
-              align-items: flex-start;
-              font-size: .9375rem;
+              font-size: .8125rem;
 
               i {
                 width: 2.125rem;
@@ -1186,15 +1185,15 @@
               height: auto;
               opacity: 1;
               transform: none;
-              padding: 1.875rem !important;
+              padding: 1.5rem;
               margin-top: 0;
 
               .title {
-                .en { font-size: 1rem; }
-                .kr { font-size: 1.5rem; }
+                .en { font-size: .875rem; }
+                .kr { font-size: 1.25rem; }
               }
 
-              .dot-list li { font-size: 1rem; }
+              .dot-list li { font-size: .875rem; }
             }
           }
         }
@@ -1218,9 +1217,9 @@
       }
 
       &--info {
-        min-height: auto !important;
+        min-height: auto;
         justify-content: flex-start;
-        padding-bottom: 0 !important;
+        padding-bottom: 0;
 
         .info-group__notice { margin-bottom: 3rem; }
       }

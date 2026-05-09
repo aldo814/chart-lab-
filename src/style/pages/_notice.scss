@@ -143,7 +143,7 @@
   &__page-btn{
     &--active{
       background: $primary;
-      color: #fff !important;
+      color: #fff;
     }
     &-arrow {
       text-indent: -9999px;
@@ -548,11 +548,12 @@
 
     &__title {
       line-height: 1.5;
+      font-size: .875rem;
     }
 
     &__num {
       width: 2.75rem;
-      font-size: .9375rem;
+      font-size: .875rem;
 
       .notice__badge {
         padding: .25rem .5rem;
@@ -570,6 +571,9 @@
       justify-content: center;
       padding-bottom: .5rem;
     }
+    .notice__page-num{
+      font-size: .8125rem;
+    }
   }
 
   .notice-view {
@@ -585,8 +589,18 @@
 
     &__meta {
       margin-top: 1rem;
+      font-size: .875rem;
       flex-wrap: wrap;
       gap: .75rem 0;
+    }
+
+    &__desc{
+      font-size: .875rem;
+    }
+
+    &__nav-none,
+    &__nav-title{
+      font-size: .875rem;
     }
 
     &__attach {
@@ -628,7 +642,7 @@
 @include mobile {
   .notice-view {
     &__title {
-      font-size: 1.375rem;
+      font-size: 1.125rem;
     }
   }
 }

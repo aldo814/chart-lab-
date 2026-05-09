@@ -177,3 +177,7 @@ img {
     background: #666;
   }
 }
+.m{display: none;}
+@include mobile {
+  .m{display: block;}
+}

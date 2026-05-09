@@ -42,7 +42,7 @@ const Business = () => {
       <div className="inner">
         <div className="sub-business__intro" data-aos="fade-up">
           <h3 className="business__title">
-            차트연구소는 금융 차트{" "}
+            차트연구소는 금융 차트 <br className="m"></br>
             <strong className="sub-business__highlight">
               솔루션 전문 기업
             </strong>

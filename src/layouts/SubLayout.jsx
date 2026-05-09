@@ -109,7 +109,6 @@ function SubLayout() {
                 </h2>
                 <p
                   className="sub-hero__desc"
-                  style={{ whiteSpace: "pre-line" }}
                   data-aos="fade-up"
                   data-aos-delay="120"
                 >

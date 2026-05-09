@@ -113,27 +113,50 @@ function Main() {
     return () => container.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // .main-page 컨테이너 기준 IntersectionObserver
+  // Desktop observes the full-page scroller. Mobile observes the viewport.
   useEffect(() => {
     const container = mainPageRef.current;
     if (!container) return;
 
-    const observerList = sectionRefs.current.map((section, index) => {
-      if (!section) return null;
-      const threshold = index === sectionRefs.current.length - 1 ? 0.2 : 0.6;
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) setCurrentIdx(index);
-          });
-        },
-        { root: container, rootMargin: "0px", threshold }
-      );
-      observer.observe(section);
-      return observer;
-    });
+    const mediaQuery = window.matchMedia("(min-width: 1025px)");
+    let observerList = [];
 
-    return () => observerList.forEach((obs) => obs?.disconnect());
+    const observeSections = () => {
+      observerList.forEach((obs) => obs?.disconnect());
+      observerList = sectionRefs.current.map((section, index) => {
+        if (!section) return null;
+        const isDesktop = mediaQuery.matches;
+        const threshold = isDesktop
+          ? index === sectionRefs.current.length - 1
+            ? 0.2
+            : 0.6
+          : 0.28;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) setCurrentIdx(index);
+            });
+          },
+          {
+            root: isDesktop ? container : null,
+            rootMargin: "0px",
+            threshold,
+          }
+        );
+
+        observer.observe(section);
+        return observer;
+      });
+    };
+
+    observeSections();
+    mediaQuery.addEventListener("change", observeSections);
+
+    return () => {
+      mediaQuery.removeEventListener("change", observeSections);
+      observerList.forEach((obs) => obs?.disconnect());
+    };
   }, []);
 
   // .main-page 컨테이너 내에서 scrollTop으로 이동

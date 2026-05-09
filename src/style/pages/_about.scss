@@ -30,6 +30,7 @@
         .sub-business__highlight {
           font-weight: 600;
           color: $primary;
+          display: inline-block;
         }
       }
 
@@ -616,6 +617,14 @@
         left: auto;
         top: auto;
         width: 100%;
+        .sub-location__addr-name{
+          font-size: 1.5rem;
+          margin: 1.25rem 0 .9375rem 0;
+        }
+        .sub-location__addr-kr{
+          font-size: 1rem;
+          word-break: keep-all;
+        }
       }
 
       &__contact {
@@ -645,8 +654,24 @@
         }
 
         .sub-business__desc {
-          font-size: 1rem;
+          font-size: .9375rem;
         }
+      }
+      .sub-business__badge{
+        margin-bottom: .9375rem;
+      }
+
+      .sub-business__desc{
+        font-size: .9375rem;
+        margin-top: .625rem;
+      }
+
+      .dot-list{
+        gap: .5rem;
+      }
+
+      .dot-list li{
+        font-size: .875rem;
       }
 
       &__outro {
@@ -827,20 +852,18 @@
     .sub-history {
       .sub-history__ceo {
         &-image {
-          height: 400px;
+          height: 350px;
 
           img {
             width: 100%;
-            height: 400px;
+            height: 100%;
             object-fit: cover;
           }
         }
       }
     }
   }
-  .sub-location__map-box{
-    > div{height: 400px !important;}
-  }
+  .sub-wrapper--about .sub-location .sub-location__map-box{height: 400px;}
 }
 
 @include mobile {
@@ -848,34 +871,35 @@
     .sub-history {
       .sub-history__ceo {
         &-image {
-          height: 400px;
+          height: 300px;
         }
       }
 
       .sub-history__item {
-        flex-direction: row !important;
-        gap: 1rem;
+        flex-direction: row;
         align-items: stretch;
-        padding-bottom: 2rem;
+        padding-bottom: 1.5625rem;
 
         .sub-history__year {
-          width: 6.5rem;
-          flex: 0 0 6.5rem;
+          width:5rem;
+          flex: 0 0 5rem;
           padding-top: 1rem;
-          font-size: 1.5rem;
+          font-size: 1.25rem;
         }
 
         .sub-history__list {
           flex: 1 1 auto;
           min-width: 0;
           padding-top: 1rem;
+          gap: .5rem;
+          .sub-history__list-item{
+            font-size: .875rem;
+          }
         }
       }
     }
   }
-  .sub-location__map-box{
-    > div{height: 350px !important;}
-  }
+  .sub-wrapper--about .sub-location .sub-location__map-box{height: 350px;}
 }
 
 /* Typography tuning */
@@ -946,14 +970,14 @@
       }
     }
 
-    .sub-history__timeline-inner {
-      .sub-history__tabs {
-        .sub-history__tab-list {
-          li .sub-history__tab-item {
-            font-size: 2.25rem;
+      .sub-history__timeline-inner {
+        .sub-history__tabs {
+          .sub-history__tab-list {
+            li .sub-history__tab-item {
+            font-size: 1.75rem;
+            }
           }
         }
-      }
     }
   }
 }
@@ -961,9 +985,13 @@
 @include mobile {
   .sub-wrapper--about {
     .sub-business {
-      &__intro .business__title,
-      &__outro-text {
+      &__intro .business__title{
         font-size: 1.375rem;
+        line-height: 140%;
+        margin-bottom: .625rem;
+      }
+      &__outro-text {
+        font-size: 1.125rem;
       }
 
       .sub-business__list {
@@ -986,4 +1014,27 @@
       }
     }
   }
+}
+
+.sub-location__map-box{
+  position: relative;
+  width: 100%;
+  height: 500px;
+  > div{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.sub-location__map-fallback{
+position: absolute;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 }
