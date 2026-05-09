@@ -3,6 +3,7 @@ import SectionTitle from "../../components/SectionTitle";
 import { PhoneIcon, ClockIcon } from "@phosphor-icons/react";
 import IcoBus from "../../assets/images/sub/ico_bus.svg";
 import IcoSubway from "../../assets/images/sub/ico_subway.svg";
+import mapImg from "../../assets/images/sub/naver_map.png";
 
 import {
   NavermapsProvider,
@@ -95,8 +96,7 @@ const Location = () => {
               </NavermapsProvider>
             ) : (
               <div className="sub-location__map-fallback">
-                <strong>차트연구소</strong>
-                <p>서울 강서구 마곡중앙로 171 프라이빗타워 2차 716호</p>
+                <img src={mapImg} alt="" />
               </div>
             )}
 
@@ -154,9 +154,7 @@ const Location = () => {
               </div>
 
               <div className="sub-location__transport-content">
-                <h4 className="sub-location__transport-title">
-                  {item.title}
-                </h4>
+                <h4 className="sub-location__transport-title">{item.title}</h4>
 
                 <ul className="sub-location__transport-list">
                   {item.routes.map((route, i) => (
