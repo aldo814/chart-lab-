@@ -68,26 +68,37 @@ const Location = () => {
       <section className="sub-location__map">
         <div className="sub-location__map-inner inner">
           <div className="sub-location__map-box">
-            <NavermapsProvider ncpKeyId={NAVER_CLIENT_ID}>
-              <MapDiv style={{ width: "100%", height: "500px" }}>
-                <NaverMap defaultCenter={position} defaultZoom={17} zoomControl>
-                  <Marker
-                    defaultPosition={position}
-                    title="차트연구소"
-                    caption={{
-                      text: "차트연구소",
-                      align: "center",
-                      offset: 10,
-                      textStyle: {
-                        color: "#111",
-                        fontSize: 14,
-                        fontWeight: "bold",
-                      },
-                    }}
-                  />
-                </NaverMap>
-              </MapDiv>
-            </NavermapsProvider>
+            {NAVER_CLIENT_ID ? (
+              <NavermapsProvider ncpKeyId={NAVER_CLIENT_ID}>
+                <MapDiv style={{ width: "100%", height: "500px" }}>
+                  <NaverMap
+                    defaultCenter={position}
+                    defaultZoom={17}
+                    zoomControl
+                  >
+                    <Marker
+                      defaultPosition={position}
+                      title="차트연구소"
+                      caption={{
+                        text: "차트연구소",
+                        align: "center",
+                        offset: 10,
+                        textStyle: {
+                          color: "#111",
+                          fontSize: 14,
+                          fontWeight: "bold",
+                        },
+                      }}
+                    />
+                  </NaverMap>
+                </MapDiv>
+              </NavermapsProvider>
+            ) : (
+              <div className="sub-location__map-fallback">
+                <strong>차트연구소</strong>
+                <p>서울 강서구 마곡중앙로 171 프라이빗타워 2차 716호</p>
+              </div>
+            )}
 
             <a
               href="https://map.naver.com/v5/directions/-/-/126.8275,37.5679,차트연구소"

@@ -56,13 +56,17 @@ const Contact = () => {
 
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbzlgBajtWFIkfUfVVYZXsPZ5L0F-IdGtI1kZLwOq5ru6aLQSs7V1ya-oqrziZjY3AyLjw/exec",
+        "/api/contact",
         {
           method: "POST",
-          headers: { "Content-Type": "text/plain" },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
         }
       );
+
+      if (!response.ok) {
+        throw new Error("Failed to submit contact form");
+      }
 
       alert("문의가 성공적으로 접수되었습니다.");
       setFormData({

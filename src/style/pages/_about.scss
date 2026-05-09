@@ -345,6 +345,30 @@
       &-box {
         border: 1px solid #dcdcdc;
       }
+
+      &-fallback {
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: .75rem;
+        background: #f7f9fb;
+        text-align: center;
+
+        strong {
+          color: $main-font;
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+
+        p {
+          color: $sub-font;
+          font-size: 1rem;
+          line-height: 1.6;
+          word-break: keep-all;
+        }
+      }
     }
 
     .sub-location__info {
