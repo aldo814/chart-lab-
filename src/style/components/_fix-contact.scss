@@ -1,3 +1,5 @@
+@use '../base/variables'as *;
+
 .fixed-contact{
   position: fixed;
   right: 0;
@@ -35,4 +37,17 @@
     color: #fff;
     font-size: .9375rem;
   }
+}
+
+@include mobile {
+  .fixed-contact{padding: .625rem .9375rem;}
+  .fixed-contact__icon-box{
+    width: 30px;
+    height: 30px;
+
+    img{
+      width: 15px;
+    }
+  }
+  .fixed-contact__text{font-size: 14px;}
 }

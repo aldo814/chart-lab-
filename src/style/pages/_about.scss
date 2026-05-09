@@ -609,6 +609,7 @@
       &__contact {
         padding-left: 0;
         margin-top: 2rem;
+        min-height: auto;
       }
 
       &__transport {
@@ -657,7 +658,6 @@
 
             .sub-business__head {
               .sub-business__title {
-                align-items: flex-start;
                 font-size: 1.375rem;
 
                 .sub-business__num {
@@ -826,6 +826,9 @@
       }
     }
   }
+  .sub-location__map-box{
+    > div{height: 400px !important;}
+  }
 }
 
 @include mobile {
@@ -857,6 +860,9 @@
         }
       }
     }
+  }
+  .sub-location__map-box{
+    > div{height: 350px !important;}
   }
 }
 

@@ -1,3 +1,5 @@
+@use '../base/variables'as *;
+
 .arrow-btn {
   display: flex;
   justify-content: center;
@@ -75,6 +77,19 @@
     color: #2E9C9C;
     &::after{
       background: url(../../assets/images/main/ico_arrow-green.svg) no-repeat center;
+    }
+  }
+}
+
+
+@include mobile {
+  .arrow-btn{
+    padding: .8125rem 1.875rem;
+    font-size: .875rem;
+    gap: 15px;
+    &:after{
+      background-size: 15px;
+      width: 15px;
     }
   }
 }

@@ -1,47 +1,50 @@
 import React from "react";
 import SectionTitle from "../../components/SectionTitle";
 import Button from "../../components/Button";
-import img01 from "../../assets/images/sub/img_hts01.png";
+import img01 from "../../assets/images/sub/img_mts01.png";
+import img02 from "../../assets/images/sub/img_mts02.png";
 
 const PowerGraphics = () => {
   const mainItem = {
     img: img01,
     features: [
       {
-        title: "HTS급 분석 수식",
-        desc: "지표 250종, 신호 160종, 구간 70종, 패턴 120종, 채움 50종",
+        title:
+          "지표 250종, 신호 160종, 구간 70종, 패턴 100종, 채움 40종을 갖춘 HTS급 분석 수식",
       },
       {
-        title: "17종의 차트 유형 및 40여종의 추세선",
+        title: "17종의 차트 유형 및 40여 종의 추세선",
       },
       {
-        title: "추세선 매매",
-        desc: "돌파 감지 후 알림·주문창 연동",
+        title: "비교 차트, 다양한 폼 차트, 폼 그래프",
       },
       {
-        title: "분할 차트",
-        desc: "최대 4개 분할 및 동기화",
+        title: "최대 4개 분할을 지원하는 분할 차트",
       },
       {
-        title: "비교 차트, 폼차트·폼그래프(약 30여종)",
+        title: "매매내역, 평균매매가 기능",
       },
       {
-        title: "HTS ↔ MTS 차트 설정 연동",
+        title: "추세선 감시 기능",
       },
     ],
   };
 
   const subItem = {
-    img: img01,
+    img: img02,
     features: [
       {
-        title: "다년간 차트 개발 경험이 집약된 모바일 전용 엔진",
+        title:
+          "다년간의 차트 개발 경험이 집약된 가볍고 강력한 모바일 전용 엔진",
       },
       {
-        title: "업계 최초 HTS ↔ MTS 속성 호환 — Android ↔ iOS 속성까지 호환",
+        title: "업계 최고의 모바일 차트 속성창 기능",
       },
       {
-        title: "App 내 다크 모드 완전 지원 — 시스템 설정과 독립적으로 동작",
+        title: "HTS 차트 설정을 모바일 환경에서도 이어받는 연동 구조",
+      },
+      {
+        title: "App 내 다크 모드 완전 지원",
       },
       {
         title: "세로·가로 모드 전용 UI 분리 설계",
@@ -54,14 +57,15 @@ const PowerGraphics = () => {
 
   return (
     <div className="product">
-      <SectionTitle
-        variant="center"
-        centerTop="HTS의 분석력, 모바일의 경험으로"
-        title="파워그래픽스 - MTS"
-        desc="파워그래픽스 3.0은 다년간 쌓아온 차트 개발 역량을 모바일 환경에 맞게 재설계한
-        솔루션입니다. HTS의 설정을 연동할 수 있는 업계 최초의 HTS ↔ MTS 연동 구조를
-        바탕으로, Android와 iOS에서 일관된 분석 경험을 제공합니다."
-      />
+      <div className="inner">
+        <SectionTitle
+          variant="center"
+          centerTop="HTS의 강력한 분석력을 모바일의 경험으로"
+          title="파워그래픽스 - MTS"
+          desc="파워그래픽스 3.0은 다년간 축적된 차트 개발 역량을 모바일 환경에 맞게 재설계한 솔루션입니다.
+        업계 최초, HTS와 MTS의 경계를 허무는 연동기술 Android와 iOS 어디서든 당신의 설정을 그대로 불러옵니다."
+        />
+      </div>
 
       <div className="product__inner inner">
         <SectionTitle variant="sub" en="CORE FEATURE" title="주요 기능" />

@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { PortableText } from "@portabletext/react";
 import { client } from "../api/sanity";
+import { fetchWithTimeout } from "../api/fetchWithTimeout";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
@@ -22,33 +23,50 @@ function MainNotice() {
   };
 
   useEffect(() => {
+    let ignore = false;
+
     const fetchNotices = async () => {
-      const pinned = await client.fetch(`
-        *[_type == "notice" && isPinned == true]
-        | order(createdAt desc)[0..2] {
-          _id, title, content, createdAt, isPinned,
-          "slug": slug.current
-        }
-      `);
+      try {
+        const pinned = await fetchWithTimeout(
+          client.fetch(`
+            *[_type == "notice" && isPinned == true]
+            | order(createdAt desc)[0..2] {
+              _id, title, content, createdAt, isPinned,
+              "slug": slug.current
+            }
+          `)
+        );
 
-      const pinnedIds = pinned.map((p) => p._id);
-      const normalCount = 6 - pinned.length;
+        const pinnedIds = pinned.map((p) => p._id);
+        const normalCount = 6 - pinned.length;
 
-      const normal = await client.fetch(
-        `*[_type == "notice" && isPinned != true && !(_id in $ids)]
-        | order(createdAt desc)[0..$count] {
-          _id, title, content, createdAt, isPinned,
-          "slug": slug.current
-        }`,
-        { ids: pinnedIds, count: normalCount - 1 }
-      );
+        const normal = await fetchWithTimeout(
+          client.fetch(
+            `*[_type == "notice" && isPinned != true && !(_id in $ids)]
+            | order(createdAt desc)[0..$count] {
+              _id, title, content, createdAt, isPinned,
+              "slug": slug.current
+            }`,
+            { ids: pinnedIds, count: normalCount - 1 }
+          )
+        );
 
-      const merged = [...pinned, ...normal];
-      setList(merged);
-      setTotal(merged.length);
+        if (ignore) return;
+        const merged = [...pinned, ...normal];
+        setList(merged);
+        setTotal(merged.length);
+      } catch (error) {
+        if (ignore) return;
+        setList([]);
+        setTotal(0);
+      }
     };
 
     fetchNotices();
+
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   return (

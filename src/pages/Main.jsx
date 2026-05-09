@@ -251,14 +251,13 @@ function Main() {
           <SwiperSlide className="hero-swiper__slide hero-swiper__slide--01">
             <div className="inner">
               <div className="hero-cont">
-                <h2 className="hero-cont__title">
-                  오직 차트만, <br></br>깊이 있게
-                </h2>
+                <h2 className="hero-cont__title">오직 차트만, 깊이 있게</h2>
                 <p className="hero-cont__desc">
-                  세계 시장을 기준으로 다년간 축적된 기술력
+                  세계 시장을 기준으로 다년간 축적된 <br></br>기술력을
+                  확인해보세요.
                 </p>
                 <Link to="/product/powerchart" className="hero-cont__btn">
-                  솔루션 확인하기
+                  솔루션 자세히보기
                 </Link>
               </div>
             </div>
@@ -267,14 +266,13 @@ function Main() {
           <SwiperSlide className="hero-swiper__slide hero-swiper__slide--02">
             <div className="inner">
               <div className="hero-cont">
-                <h2 className="hero-cont__title">
-                  신뢰와 <br></br> 책임으로
-                </h2>
+                <h2 className="hero-cont__title">신뢰와 책임으로</h2>
                 <p className="hero-cont__desc">
-                  정확성과 안정성을 기반으로 한 신뢰 있는 기술
+                  정확성과 안정성을 기반으로 한<br></br> 신뢰 있는 기술을
+                  제공합니다.
                 </p>
-                <Link to="/product/powerchart" className="hero-cont__btn">
-                  솔루션 확인하기
+                <Link to="/contact" className="hero-cont__btn">
+                  기술 파트너십 문의
                 </Link>
               </div>
             </div>
@@ -283,12 +281,14 @@ function Main() {
           <SwiperSlide className="hero-swiper__slide hero-swiper__slide--04">
             <div className="inner">
               <div className="hero-cont">
-                <h2 className="hero-cont__title">
-                  세계 시장을<br></br> 목표로
-                </h2>
+                <h2 className="hero-cont__title">다년간 축적된 기술력</h2>
                 <p className="hero-cont__desc">
-                  글로벌 금융 환경을 향한 차트 솔루션의 확장
+                  오랜 시간 검증된 기술로 <br></br>더 안전하고 완벽한 결과를
+                  만듭니다.
                 </p>
+                <Link to="/product/powerchart" className="hero-cont__btn">
+                  솔루션 확인하기
+                </Link>
               </div>
             </div>
           </SwiperSlide>
@@ -296,12 +296,14 @@ function Main() {
           <SwiperSlide className="hero-swiper__slide hero-swiper__slide--03">
             <div className="inner">
               <div className="hero-cont">
-                <h2 className="hero-cont__title">
-                  다년간 <br></br>축적된 기술력
-                </h2>
+                <h2 className="hero-cont__title">국내 최고를 목표로</h2>
                 <p className="hero-cont__desc">
-                  시간으로 검증된 기술력과 노하우
+                  신뢰받는 기술과 전문성을 바탕으로 <br></br>업계 최고의
+                  파트너가 되겠습니다.
                 </p>
+                <Link to="/contact" className="hero-cont__btn">
+                  기술 파트너십 문의
+                </Link>
               </div>
             </div>
           </SwiperSlide>
@@ -332,8 +334,7 @@ function Main() {
                   <h3 className="kr">파워 차트 2.5 (HTS)</h3>
                   <p className="desc">
                     윈도우 환경에서 완벽하게 동작하는 통합 분석 차트, 최신
-                    트렌드에 맞게 다양한 기능 구현. <br></br> 업계 최초 모바일
-                    차트와 연동
+                    트렌드에 맞게 다양한 기능 제공
                   </p>
                 </div>
                 <ul className="ico-list">
@@ -341,14 +342,13 @@ function Main() {
                     <i className="ico">
                       <img src={htsIco01} alt="" />
                     </i>
-                    지표, 신호, 구간, 채움, 추세선 분석에 필요한 모든 것
+                    지표, 신호, 구간, 채움, 추세선 분석에 필요한 모든 것.
                   </li>
                   <li>
                     <i className="ico">
                       <img src={htsIco02} alt="" />
                     </i>
-                    신한, 유안타, LS증권, IBK기업은행, 선물사에서 운용중인
-                    검증된 차트 엔진
+                    국내 주요 증권사·선물사에서 운용 중인 검증된 차트 엔진
                   </li>
                   <li>
                     <i className="ico">
@@ -360,7 +360,7 @@ function Main() {
                     <i className="ico">
                       <img src={htsIco04} alt="" />
                     </i>
-                    다양한 그래프 및 폼 차트 지원
+                    비교차트, 다양한 그래프 및 폼 차트
                   </li>
                 </ul>
               </div>
@@ -408,9 +408,8 @@ function Main() {
                   <span className="en">power graphics</span>
                   <h3 className="kr">파워그래픽스 3.0 (MTS)</h3>
                   <div className="desc">
-                    데스크톱의 분석 경험을 모바일로 확장. <br></br>기술력을
-                    쌓아온 HTS 차트 엔진을 모바일 환경에 맞게 재설계한 차세대
-                    솔루션.
+                    HTS의 압도적 성능을 내 손안에 - 분석의 한계를 허문 모바일
+                    차트의 진화
                   </div>
                 </div>
                 <ul className="ico-list">
@@ -418,25 +417,19 @@ function Main() {
                     <i className="ico">
                       <img src={mtsIco01} alt="" />
                     </i>
-                    HTS 차트 설정을 모바일에서 그대로
-                  </li>
-                  <li>
-                    <i className="ico">
-                      <img src={mtsIco02} alt="" />
-                    </i>
-                    다양한 해상도 지원 및 다크 모드 대응
+                    강력한 HTS 차트 분석 기능을 MTS 차트로 구현
                   </li>
                   <li>
                     <i className="ico">
                       <img src={mtsIco03} alt="" />
                     </i>
-                    Android·iOS 속성 호환 모바일 차트
+                    업계 최고의 모바일 차트 속성 기능
                   </li>
                   <li>
                     <i className="ico">
                       <img src={mtsIco04} alt="" />
                     </i>
-                    추세선 돌파 감지부터 주문 연동까지
+                    매매내역, 평균매매가 기능
                   </li>
                 </ul>
               </div>
@@ -453,7 +446,6 @@ function Main() {
                   </li>
                   <li>App 내 다크 모드 완전 지원</li>
                   <li>세로·가로 모드 전용 UI 분리 설계</li>
-                  <li>Android 5.0 / iOS 13.0 이상 지원</li>
                 </ul>
                 <Button variant="arrow-blue" to="/product/powergraphics">
                   자세히보기
@@ -547,20 +539,6 @@ function Main() {
               <Button variant="arrow-white-green" to="/contact">
                 문의하기
               </Button>
-            </div>
-            <div className="contact__list">
-              <div className="contact__item">
-                <h4 className="contact__title">e-mail</h4>
-                <p className="contact__desc">
-                  <a href="mailto:chartlab@naver.com">chartlab@naver.com</a>
-                </p>
-              </div>
-              <div className="contact__item">
-                <h4 className="contact__title">Tel</h4>
-                <p className="contact__desc">
-                  <a href="tel:02-2603-8958">02-2603-8958</a>
-                </p>
-              </div>
             </div>
           </div>
         </div>

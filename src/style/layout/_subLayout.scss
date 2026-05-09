@@ -40,12 +40,14 @@
       letter-spacing: -4%;
       font-weight: 600;
       margin-bottom: .625rem;
+      word-break: keep-all;
     }
 
     .sub-hero__desc {
       font-size: $font-desc;
       white-space: pre-line;
       line-height: 140%;
+      word-break: keep-all;
     }
   }
 

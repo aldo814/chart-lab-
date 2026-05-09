@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { client } from "../../api/sanity";
+import { fetchWithTimeout } from "../../api/fetchWithTimeout";
 import { Link } from "react-router-dom";
 import SectionTitle from "../../components/SectionTitle";
 import { PaperclipIcon } from "@phosphor-icons/react";
@@ -16,9 +17,11 @@ function NoticeList() {
   const perPage = 10;
 
   useEffect(() => {
+    let ignore = false;
+
     setLoading(true);
-    client
-      .fetch(
+    fetchWithTimeout(
+      client.fetch(
         `
         *[_type == "notice"] 
         | order(isPinned desc, createdAt desc) {
@@ -33,8 +36,20 @@ function NoticeList() {
         }
       `
       )
-      .then((res) => setList(res))
-      .finally(() => setLoading(false));
+    )
+      .then((res) => {
+        if (!ignore) setList(res);
+      })
+      .catch(() => {
+        if (!ignore) setList([]);
+      })
+      .finally(() => {
+        if (!ignore) setLoading(false);
+      });
+
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   const pinnedList = list.filter((item) => item.isPinned).slice(0, 3);

@@ -13,7 +13,6 @@ import Powerchart from "../pages/Product/PowerChart";
 import Powergraphics from "../pages/Product/PowerGraphics";
 
 import Project from "../pages/Portfolio/Project";
-import Partner from "../pages/Portfolio/Partner";
 
 import Notice from "../pages/Notice/NoticeList";
 import NoticeView from "../pages/Notice/NoticeView";
@@ -50,7 +49,6 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <Navigate to="project" replace /> },
           { path: "project", element: <Project /> },
-          { path: "partner", element: <Partner /> },
         ],
       },
       {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { client } from "../../api/sanity";
+import { fetchWithTimeout } from "../../api/fetchWithTimeout";
 import SectionTitle from "../../components/SectionTitle";
 import icoDown from "../../assets/images/sub/ico_down.svg";
 import icoNavPrev from "../../assets/images/sub/ico_nav_prev.svg";
@@ -66,13 +67,20 @@ function NoticeView() {
   const [post, setPost] = useState(null);
   const [prevPost, setPrevPost] = useState(null);
   const [nextPost, setNextPost] = useState(null);
+  const [notFound, setNotFound] = useState(false);
   const [loadingNav, setLoadingNav] = useState(true);
 
   useEffect(() => {
+    let ignore = false;
+
+    setPost(null);
+    setPrevPost(null);
+    setNextPost(null);
+    setNotFound(false);
     setLoadingNav(true);
 
-    client
-      .fetch(
+    fetchWithTimeout(
+      client.fetch(
         `*[_type == "notice" && slug.current == $slug][0]{
           _id,
           title,
@@ -91,30 +99,48 @@ function NoticeView() {
         }`,
         { slug }
       )
+    )
       .then(async (current) => {
+        if (ignore) return;
         setPost(current);
 
         if (!current?.createdAt) {
+          setNotFound(true);
           setLoadingNav(false);
           return;
         }
 
-        const prev = await client.fetch(
-          `*[_type == "notice" && createdAt < $createdAt && !isPinned]
-           | order(createdAt desc)[0] { _id, title, "slug": slug.current }`,
-          { createdAt: current.createdAt }
-        );
+        const [prev, next] = await Promise.all([
+          fetchWithTimeout(
+            client.fetch(
+              `*[_type == "notice" && createdAt < $createdAt && !isPinned]
+              | order(createdAt desc)[0] { _id, title, "slug": slug.current }`,
+              { createdAt: current.createdAt }
+            )
+          ),
+          fetchWithTimeout(
+            client.fetch(
+              `*[_type == "notice" && createdAt > $createdAt && !isPinned]
+              | order(createdAt asc)[0] { _id, title, "slug": slug.current }`,
+              { createdAt: current.createdAt }
+            )
+          ),
+        ]);
 
-        const next = await client.fetch(
-          `*[_type == "notice" && createdAt > $createdAt && !isPinned]
-           | order(createdAt asc)[0] { _id, title, "slug": slug.current }`,
-          { createdAt: current.createdAt }
-        );
-
+        if (ignore) return;
         setPrevPost(prev);
         setNextPost(next);
         setLoadingNav(false);
+      })
+      .catch(() => {
+        if (ignore) return;
+        setNotFound(true);
+        setLoadingNav(false);
       });
+
+    return () => {
+      ignore = true;
+    };
   }, [slug]);
 
   const truncateFilename = (filename, maxLength = 10) => {
@@ -125,6 +151,25 @@ function NoticeView() {
     if (name.length <= maxLength) return filename;
     return name.slice(0, maxLength) + "..." + ext;
   };
+
+  if (notFound) {
+    return (
+      <div className="notice-view">
+        <div className="inner">
+          <SectionTitle variant="only" title="공지사항" />
+          <div className="notice__empty">게시글을 불러오지 못했습니다.</div>
+          <div className="notice-view__actions">
+            <button
+              className="notice-view__btn notice-view__btn--list"
+              onClick={() => navigate("/notice")}
+            >
+              목록
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!post) {
     return (

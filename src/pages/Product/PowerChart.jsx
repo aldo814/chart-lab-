@@ -2,6 +2,8 @@ import React from "react";
 import SectionTitle from "../../components/SectionTitle";
 import Button from "../../components/Button";
 import img01 from "../../assets/images/sub/img_hts01.png";
+import img02 from "../../assets/images/sub/img_hts02.png";
+import img03 from "../../assets/images/sub/img_hts03.png";
 
 const PowerChart = () => {
   // 주요 기능
@@ -9,42 +11,31 @@ const PowerChart = () => {
     img: img01,
     features: [
       {
-        title: "업계 최다 수준의 수식 DB",
-        desc: "지표 250종, 시그널 160종, 구간 70종, 채움, 패턴 70종, 추세선 60종, 매매전략 50종",
+        title:
+          "지표 250종, 시그널 160종, 구간 70종, 채움 40종, 패턴 100종, 추세선 60종, 매매전략 50종의 업계 최다 수준 분석 수식 제공",
+        desc: "",
       },
       {
-        title: "사용자 수식 제작 환경",
-        desc: "수식관리자 · 데이터 위자드",
+        title:
+          "수식관리자를 통해 사용자가 직접 지표, 신호등을 제작 분석 할 수 있는 환경 제공",
       },
       {
-        title: "국내 최초 분할 이벤트 감시",
-        desc: "한 차트에서 최대 12종목 실시간 모니터링",
+        title:
+          "Script 기반 개발로 공수를 절감할 수 있는 FormDev 연동 폼 차트·폼 그래프 기능",
       },
       {
-        title: "시스템 트레이딩 및 최적화 전략",
-        desc: "가상매매 시뮬레이션 및 리포트 제공",
+        title:
+          "매매복기, 전광판 차트, 언론에 소개된 홍보용 차트, MarketMap 등 특이차트 지원",
       },
       {
-        title: "FormDev 연동 폼차트·폼그래프",
-        desc: "Script 기반 개발로 공수 절감",
-      },
-      {
-        title: "특수차트",
-        desc: "매매복기, 전광판 차트, 언론에 소개된 홍보용 차트, MarketMap 등",
-      },
-      {
-        title: "유연한 데이터 연동",
-        desc: "Excel, Image, HTML, PDF 등 다양한 포맷 지원",
-      },
-      {
-        title: "20종의 다양한 폼 그래프 및 폼 차트",
+        title: "비교 차트, 다양한 폼 그래프 및 폼 차트",
       },
     ],
   };
 
   // 추가 특징
   const subItem = {
-    img: img01,
+    img: img02,
     features: [
       {
         title: "FastLight Drawing 기법 기반의 고성능 드로잉",
@@ -53,30 +44,36 @@ const PowerChart = () => {
         title: "선물 만기 틱차트 환경에서도 안정적인 퍼포먼스",
       },
       {
-        title: "강력한 분할 프레임 및 차트 간 동기화",
+        title: "다양한 분할 프레임 및 차트 간 동기화",
       },
       {
-        title: "업계 최초 MTS와 속성 설정 저장 및 연동",
+        title:
+          "국내주식/선물/지수, 해외주식/선물/지수, FX차트까지 확장 가능한 엔진 구조",
       },
       {
         title: "초급자·고급자 모드 분리로 폭넓은 사용자층 수용",
       },
       {
-        title: "국내 주요 금융기관 다수 납품으로 검증된 안정성",
+        title: "프레임 다크 모드, 다양한 차트 스캔 기능",
+      },
+      {
+        title:
+          "업계 최고 수준의 100여 가지 차트 속성 제어와 실시간 프리뷰 기능",
       },
     ],
   };
 
   return (
     <div className="product">
-      <SectionTitle
-        variant="center"
-        centerTop="금융 현장에서 완성된 통합 차트 솔루션"
-        title="파워차트 - HTS"
-        desc="파워차트 2.5는 국내 주요 증권사·선물사·은행의 실무에서 검증된 HTS 차트 시스템입니다.
-        250종에 이르는 분석 지표, 시스템 트레이딩, 신호, 구간, 채움, 패턴, 추세선 기능을
-        활용해서 급변하는 주식 장세에 수익을 극대화 할 수 있는 분석 환경을 제공합니다."
-      />
+      <div className="inner">
+        <SectionTitle
+          variant="center"
+          centerTop="금융 현장에서 완성된 통합 차트 솔루션"
+          title="파워차트 - HTS"
+          desc="파워차트 2.5는 국내 주요 증권사·선물사·은행의 실무 환경에서 검증된 HTS 차트 시스템입니다.
+        당신이 상상하는 모든 매매 전략의 현실화, 국내 최다 지표,신호,패턴 등의 분석을 통해 급변하는 장세에서도 흔들림 없는 투자 환경을 제공합니다."
+        />
+      </div>
 
       {/* ===== 주요 기능 ===== */}
       <div className="product__inner inner">
@@ -132,6 +129,23 @@ const PowerChart = () => {
         </div>
       </div>
 
+      <div className="product__inner inner media">
+        <div className="product__item">
+          <div className="product__img">
+            <img src={img03} alt="" />
+          </div>
+
+          <div className="media__cont">
+            <h4 className="media__cont-title">언론사에 소개 된 차트</h4>
+            <p className="media__cont-desc">
+              차트연구소의 파워차트 분석 화면이 언론을 통해 소개되었습니다.
+              <br></br>실전 매매 환경에 최적화된 차트 구성과 다양한 분석 기능을
+              바탕으로,<br></br>투자자가 시장 흐름을 보다 직관적으로 파악할 수
+              있도록 지원합니다.
+            </p>
+          </div>
+        </div>
+      </div>
       {/* ===== 문의하기 CTA ===== */}
       <div className="product__cta">
         <div className="product__inner inner">
