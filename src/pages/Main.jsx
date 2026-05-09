@@ -199,7 +199,7 @@ function Main() {
 
       {/* 히어로 섹션 */}
       <section
-        className="section section--hero"
+        className={`section section--hero ${currentIdx === 0 ? "is-active" : ""}`}
         ref={(el) => (sectionRefs.current[0] = el)}
       >
         <div className="hero-control">
@@ -244,7 +244,9 @@ function Main() {
               ).length
             );
           }}
-          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex + 1)}
+          onSlideChange={(swiper) => {
+            setActiveIndex(swiper.realIndex + 1);
+          }}
           onAutoplayTimeLeft={onAutoplayTimeLeft}
           className="hero-swiper"
         >
@@ -312,18 +314,18 @@ function Main() {
 
       {/* HTS 섹션 */}
       <section
-        className="section section--product section--light"
+        className={`section section--product section--light ${currentIdx === 1 ? "is-active" : ""}`}
         ref={(el) => (sectionRefs.current[1] = el)}
       >
         <div className="inner">
           <div className="section__title-wrap">
-            <span className="en">product preview</span>
-            <h2 className="kr">
+            <span className="en reveal-up reveal-up--title">product preview</span>
+            <h2 className="kr reveal-up reveal-up--desc">
               희소성이 높은 새롭고 <br />
               <b>혁신적 기능의 종합차트 솔루션 제공</b>
             </h2>
           </div>
-          <div className="product-item">
+          <div className="product-item reveal-up reveal-up--content">
             <div className="product-item__img">
               <img src={productImg01} alt="제품 이미지 01" />
             </div>
@@ -386,19 +388,19 @@ function Main() {
 
       {/* MTS 섹션 */}
       <section
-        className="section section--product section--dark"
+        className={`section section--product section--dark ${currentIdx === 2 ? "is-active" : ""}`}
         ref={(el) => (sectionRefs.current[2] = el)}
       >
         <div className="inner">
           <div className="section__title-wrap">
-            <span className="en">product preview</span>
-            <h2 className="kr">
+            <span className="en reveal-up reveal-up--title">product preview</span>
+            <h2 className="kr reveal-up reveal-up--desc">
               경쟁사 대비 월등한 성능
               <br />
               <b>종합 단말 운영사가 채택한 솔루션</b>
             </h2>
           </div>
-          <div className="product-item">
+          <div className="product-item reveal-up reveal-up--content">
             <div className="product-item__img">
               <img src={productImg02} alt="제품 이미지 02" />
             </div>
@@ -458,11 +460,11 @@ function Main() {
 
       {/* 파트너 섹션 */}
       <section
-        className="section section--partners"
+        className={`section section--partners ${currentIdx === 3 ? "is-active" : ""}`}
         ref={(el) => (sectionRefs.current[3] = el)}
       >
         <div className="inner">
-          <h2 className="partners__title">
+          <h2 className="partners__title reveal-up reveal-up--title">
             <b>
               <i>
                 <img src={icoChart} alt="" />
@@ -471,14 +473,14 @@ function Main() {
             </b>
             <span>Trusted by Financial Institutions</span>
           </h2>
-          <p className="partners__desc">
+          <p className="partners__desc reveal-up reveal-up--desc">
             금융 시장이 선택한 차트 연구소
             <br />
             <b>정확한 데이터와 안정적인 기술력</b>을 바탕으로, 신뢰할 수 있는
             기업들과 함께 성장합니다
           </p>
         </div>
-        <div className="partners__wrap">
+        <div className="partners__wrap reveal-up reveal-up--content">
           <div className="partners__row">
             <div className="partners__track partners__track--ltr">
               {[...partnerLogos, ...partnerLogos].map((logo, i) => (
@@ -504,24 +506,26 @@ function Main() {
 
       {/* 공지사항 + 문의 */}
       <section
-        className="section section--info"
+        className={`section section--info ${currentIdx === 4 ? "is-active" : ""}`}
         ref={(el) => (sectionRefs.current[4] = el)}
       >
         <div className="inner">
           <div className="info-group">
             <div className="info-group__notice">
               <div className="section__title-wrap">
-                <span className="en">Notice</span>
-                <h2 className="kr">
+                <span className="en reveal-up reveal-up--title">Notice</span>
+                <h2 className="kr reveal-up reveal-up--desc">
                   차트솔루션의
                   <br />
                   <b>새로운 소식을 만나보세요.</b>
                 </h2>
-                <Button variant="arrow-black" to="/notice">
-                  자세히 보기
-                </Button>
+                <div className="reveal-up reveal-up--action">
+                  <Button variant="arrow-black" to="/notice">
+                    자세히 보기
+                  </Button>
+                </div>
               </div>
-              <div className="section__noitce">
+              <div className="section__noitce reveal-up reveal-up--content">
                 <MainNotice />
               </div>
             </div>
@@ -530,15 +534,17 @@ function Main() {
         <div className="info-group__contact">
           <div className="inner">
             <div className="contact__title-wrap">
-              <span className="en">Contact us</span>
-              <h2 className="kr">
+              <span className="en reveal-up reveal-up--title">Contact us</span>
+              <h2 className="kr reveal-up reveal-up--desc">
                 궁금한 점이나 도입 문의는 언제든지 편하게 남겨주세요.
                 <br />
                 빠르고 정확한 상담으로 최적의 차트 솔루션을 제안드립니다.
               </h2>
-              <Button variant="arrow-white-green" to="/contact">
-                문의하기
-              </Button>
+              <div className="reveal-up reveal-up--action">
+                <Button variant="arrow-white-green" to="/contact">
+                  문의하기
+                </Button>
+              </div>
             </div>
           </div>
         </div>

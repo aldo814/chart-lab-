@@ -57,7 +57,7 @@ const position = { lat: 37.5679, lng: 126.8275 };
 const Location = () => {
   return (
     <div className="sub-location">
-      <div className="inner">
+      <div className="inner" data-aos="fade-up">
         <SectionTitle
           variant="default"
           en="LOCATION"
@@ -66,7 +66,7 @@ const Location = () => {
         />
       </div>
 
-      <section className="sub-location__map">
+      <section className="sub-location__map" data-aos="fade-up">
         <div className="sub-location__map-inner inner">
           <div className="sub-location__map-box">
             {NAVER_CLIENT_ID ? (
@@ -143,12 +143,17 @@ const Location = () => {
         </div>
       </section>
 
-      <section className="sub-location__transport">
+      <section className="sub-location__transport" data-aos="fade-up">
         <div className="sub-location__transport-inner inner">
           <h3 className="sub-location-title">대중교통 이용안내</h3>
 
           {transportList.map((item, idx) => (
-            <div key={idx} className="sub-location__transport-item">
+            <div
+              key={idx}
+              className="sub-location__transport-item"
+              data-aos="fade-up"
+              data-aos-delay={idx * 120}
+            >
               <div className="sub-location__transport-icon">
                 <img src={item.icon} alt={item.title} />
               </div>

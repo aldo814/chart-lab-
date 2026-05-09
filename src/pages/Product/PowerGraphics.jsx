@@ -57,7 +57,7 @@ const PowerGraphics = () => {
 
   return (
     <div className="product">
-      <div className="inner">
+      <div className="inner" data-aos="fade-up">
         <SectionTitle
           variant="center"
           centerTop="HTS의 강력한 분석력을 모바일의 경험으로"
@@ -68,16 +68,18 @@ const PowerGraphics = () => {
       </div>
 
       <div className="product__inner inner">
-        <SectionTitle variant="sub" en="CORE FEATURE" title="주요 기능" />
+        <div data-aos="fade-up">
+          <SectionTitle variant="sub" en="CORE FEATURE" title="주요 기능" />
+        </div>
 
-        <div className="product__item">
+        <div className="product__item" data-aos="fade-up" data-aos-delay="120">
           <div className="product__img">
             <img src={mainItem.img} alt="" />
           </div>
 
           <ul className="product__feature-list">
             {mainItem.features.map((item, idx) => (
-              <li className="product__feature" key={idx}>
+              <li className="product__feature" key={idx} data-aos="fade-up">
                 <span className="product__num">
                   {String(idx + 1).padStart(2, "0")}
                 </span>
@@ -94,16 +96,18 @@ const PowerGraphics = () => {
 
       <div className="product__extra">
         <div className="product__inner inner">
-          <SectionTitle variant="sub" en="more FEATURE" title="핵심 강점" />
+          <div data-aos="fade-up">
+            <SectionTitle variant="sub" en="more FEATURE" title="핵심 강점" />
+          </div>
 
-          <div className="product__item">
+          <div className="product__item" data-aos="fade-up" data-aos-delay="120">
             <div className="product__img">
               <img src={subItem.img} alt="" />
             </div>
 
             <ul className="product__feature-list product__feature-list--extra">
               {subItem.features.map((item, idx) => (
-                <li className="product__feature" key={idx}>
+                <li className="product__feature" key={idx} data-aos="fade-up">
                   <span className="product__num">
                     {String(idx + 1).padStart(2, "0")}
                   </span>
@@ -119,7 +123,7 @@ const PowerGraphics = () => {
         </div>
       </div>
 
-      <div className="product__cta">
+      <div className="product__cta" data-aos="fade-up">
         <div className="product__inner inner">
           <p className="product__cta-text">
             지금 바로 MTS 솔루션을 <br></br>

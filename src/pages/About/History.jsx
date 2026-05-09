@@ -107,7 +107,7 @@ const History = () => {
   return (
     <div className="sub-history">
       {/* CEO */}
-      <section className="sub-history__ceo">
+      <section className="sub-history__ceo" data-aos="fade-up">
         <div className="sub-history__ceo-inner inner">
           <div className="sub-history__ceo-text">
             <h3
@@ -129,7 +129,7 @@ const History = () => {
       </section>
 
       {/* 브릿지 */}
-      <section className="sub-history__bridge">
+      <section className="sub-history__bridge" data-aos="fade-up">
         <div className="sub-history__bridge-inner inner">
           <p
             className="sub-history__bridge-text"
@@ -140,8 +140,10 @@ const History = () => {
 
       {/* 연혁 */}
       <section className="sub-history__timeline inner">
-        <SectionTitle variant="sub" en="HISTORY" title="연혁" />
-        <div className="sub-history__timeline-inner">
+        <div data-aos="fade-up">
+          <SectionTitle variant="sub" en="HISTORY" title="연혁" />
+        </div>
+        <div className="sub-history__timeline-inner" data-aos="fade-up" data-aos-delay="120">
           {/* 탭 */}
           <div className="sub-history__tabs">
             <ul className="sub-history__tab-list">
@@ -164,7 +166,7 @@ const History = () => {
           {/* 리스트 */}
           <div className="sub-history__list">
             {groupedData[activeTab].map((item) => (
-              <div key={item.year} className="sub-history__item">
+              <div key={item.year} className="sub-history__item" data-aos="fade-up">
                 <div className="sub-history__year">{item.year}</div>
 
                 <ul className="sub-history__list">

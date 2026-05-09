@@ -156,7 +156,9 @@ function NoticeView() {
     return (
       <div className="notice-view">
         <div className="inner">
-          <SectionTitle variant="only" title="공지사항" />
+          <div data-aos="fade-up">
+            <SectionTitle variant="only" title="공지사항" />
+          </div>
           <div className="notice__empty">게시글을 불러오지 못했습니다.</div>
           <div className="notice-view__actions">
             <button
@@ -213,9 +215,11 @@ function NoticeView() {
   return (
     <div className="notice-view">
       <div className="inner">
-        <SectionTitle variant="only" title="공지사항" />
+        <div data-aos="fade-up">
+          <SectionTitle variant="only" title="공지사항" />
+        </div>
 
-        <div className="notice-view__head">
+        <div className="notice-view__head" data-aos="fade-up" data-aos-delay="120">
           <h3 className="notice-view__title">{post.title}</h3>
           <div className="notice-view__meta">
             <div className="notice-view__meta-item">
@@ -233,7 +237,7 @@ function NoticeView() {
           </div>
         </div>
 
-        <div className="notice-view__desc">
+        <div className="notice-view__desc" data-aos="fade-up" data-aos-delay="220">
           {post.content ? (
             <PortableText
               value={post.content}
@@ -270,7 +274,7 @@ function NoticeView() {
           </div>
         )} */}
 
-        <div className="notice-view__nav">
+        <div className="notice-view__nav" data-aos="fade-up" data-aos-delay="320">
           <div className="notice-view__nav-item notice-view__nav-item--prev">
             {loadingNav ? (
               <div className="notice-view__nav-link--skeleton">
@@ -362,7 +366,7 @@ function NoticeView() {
           </div>
         </div>
 
-        <div className="notice-view__actions">
+        <div className="notice-view__actions" data-aos="fade-up">
           <button
             className="notice-view__btn notice-view__btn--list"
             onClick={() => navigate("/notice")}

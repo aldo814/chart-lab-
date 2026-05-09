@@ -1,10 +1,12 @@
 import Header from "./Header";
 import { Outlet } from "react-router-dom";
 import FixedContact from "../components/FixedContact";
+import RouteEffects from "../components/RouteEffects";
 
 function MainLayout() {
   return (
     <div className="wrapper">
+      <RouteEffects />
       <Header />
       <main id="container">
         <Outlet />

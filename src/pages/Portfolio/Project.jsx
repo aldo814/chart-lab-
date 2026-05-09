@@ -55,15 +55,22 @@ const Project = () => {
     <div className="sub-wrapper--about">
       <div className="sub-business project">
         <div className="inner">
-          <SectionTitle
-            variant="left"
-            en="PROJECT PORTFOLIO"
-            title="프로젝트 사례"
-          />
+          <div data-aos="fade-up">
+            <SectionTitle
+              variant="left"
+              en="PROJECT PORTFOLIO"
+              title="프로젝트 사례"
+            />
+          </div>
 
           <div className="sub-business__list">
             {projectList.map((item, idx) => (
-              <div className="sub-business__item" key={idx}>
+              <div
+                className="sub-business__item"
+                key={idx}
+                data-aos="fade-up"
+                data-aos-delay={(idx % 3) * 100}
+              >
                 {/* 이미지 영역 */}
                 <div className="sub-business__img">
                   <img src={item.img} alt={item.name} />

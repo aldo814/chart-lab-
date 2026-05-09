@@ -40,7 +40,7 @@ const Business = () => {
   return (
     <div className="sub-business">
       <div className="inner">
-        <div className="sub-business__intro">
+        <div className="sub-business__intro" data-aos="fade-up">
           <h3 className="business__title">
             차트연구소는 금융 차트{" "}
             <strong className="sub-business__highlight">
@@ -56,11 +56,18 @@ const Business = () => {
             설계하고 운영합니다.
           </p>
         </div>
-        <SectionTitle en="Business Areas" title="사업 소개" />
+        <div data-aos="fade-up" data-aos-delay="120">
+          <SectionTitle en="Business Areas" title="사업 소개" />
+        </div>
 
         <div className="sub-business__list">
           {businessData.map((item) => (
-            <div className="sub-business__item" key={item.id}>
+            <div
+              className="sub-business__item"
+              key={item.id}
+              data-aos="fade-up"
+              data-aos-delay={item.id * 120}
+            >
               {/* IMAGE */}
               <div className="sub-business__img">
                 <img src={item.img} alt={item.title} />
@@ -86,7 +93,7 @@ const Business = () => {
           ))}
         </div>
       </div>
-      <div className="sub-business__outro">
+      <div className="sub-business__outro" data-aos="fade-up">
         <div className="inner">
           <p className="sub-business__outro-text">
             제품 납품을 넘어, 고객과 함께 성장하는 <br></br>

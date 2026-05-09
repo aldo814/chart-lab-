@@ -65,7 +65,7 @@ const PowerChart = () => {
 
   return (
     <div className="product">
-      <div className="inner">
+      <div className="inner" data-aos="fade-up">
         <SectionTitle
           variant="center"
           centerTop="금융 현장에서 완성된 통합 차트 솔루션"
@@ -77,16 +77,18 @@ const PowerChart = () => {
 
       {/* ===== 주요 기능 ===== */}
       <div className="product__inner inner">
-        <SectionTitle variant="sub" en="CORE FEATURE" title="주요 기능" />
+        <div data-aos="fade-up">
+          <SectionTitle variant="sub" en="CORE FEATURE" title="주요 기능" />
+        </div>
 
-        <div className="product__item">
+        <div className="product__item" data-aos="fade-up" data-aos-delay="120">
           <div className="product__img">
             <img src={mainItem.img} alt="" />
           </div>
 
           <ul className="product__feature-list">
             {mainItem.features.map((item, idx) => (
-              <li className="product__feature" key={idx}>
+              <li className="product__feature" key={idx} data-aos="fade-up">
                 <span className="product__num">
                   {String(idx + 1).padStart(2, "0")}
                 </span>
@@ -104,16 +106,18 @@ const PowerChart = () => {
       {/* ===== 추가 특징 ===== */}
       <div className="product__extra">
         <div className="product__inner inner">
-          <SectionTitle variant="sub" en="more FEATURE" title="추가 특징" />
+          <div data-aos="fade-up">
+            <SectionTitle variant="sub" en="more FEATURE" title="추가 특징" />
+          </div>
 
-          <div className="product__item">
+          <div className="product__item" data-aos="fade-up" data-aos-delay="120">
             <div className="product__img">
               <img src={subItem.img} alt="" />
             </div>
 
             <ul className="product__feature-list product__feature-list--extra">
               {subItem.features.map((item, idx) => (
-                <li className="product__feature" key={idx}>
+                <li className="product__feature" key={idx} data-aos="fade-up">
                   <span className="product__num">
                     {String(idx + 1).padStart(2, "0")}
                   </span>
@@ -129,7 +133,7 @@ const PowerChart = () => {
         </div>
       </div>
 
-      <div className="product__inner inner media">
+      <div className="product__inner inner media" data-aos="fade-up">
         <div className="product__item">
           <div className="product__img">
             <img src={img03} alt="" />
@@ -147,7 +151,7 @@ const PowerChart = () => {
         </div>
       </div>
       {/* ===== 문의하기 CTA ===== */}
-      <div className="product__cta">
+      <div className="product__cta" data-aos="fade-up">
         <div className="product__inner inner">
           <p className="product__cta-text">
             지금 바로 HTS 솔루션을 <br></br>

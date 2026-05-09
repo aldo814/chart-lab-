@@ -104,16 +104,24 @@ function SubLayout() {
           <section className={`sub-hero sub-hero--${depth1}`}>
             <div className="sub-hero__inner inner">
               <div className="sub-hero__content">
-                <h2 className="sub-hero__title">{currentCategory.title}</h2>
+                <h2 className="sub-hero__title" data-aos="fade-up">
+                  {currentCategory.title}
+                </h2>
                 <p
                   className="sub-hero__desc"
                   style={{ whiteSpace: "pre-line" }}
+                  data-aos="fade-up"
+                  data-aos-delay="120"
                 >
                   {currentCategory.desc}
                 </p>
               </div>
 
-              <ul className="sub-hero__breadcrumb">
+              <ul
+                className="sub-hero__breadcrumb"
+                data-aos="fade-up"
+                data-aos-delay="220"
+              >
                 <li className="sub-hero__home-icon">
                   <Link to="/">
                     <i>
@@ -132,7 +140,11 @@ function SubLayout() {
 
           {tabs.length > 0 && (
             <nav className="sub-tab">
-              <div className="sub-tab__inner inner">
+              <div
+                className="sub-tab__inner inner"
+                data-aos="fade-up"
+                data-aos-delay="120"
+              >
                 <ul className="sub-tab__list">
                   {tabs.map((tab) => (
                     <li
@@ -151,7 +163,7 @@ function SubLayout() {
             </nav>
           )}
 
-          <main className="sub-container">
+          <main className="sub-container" data-aos="fade-up" data-aos-delay="180">
             <Outlet />
           </main>
         </div>

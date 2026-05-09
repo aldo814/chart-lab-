@@ -41,7 +41,9 @@ function Header() {
       navBg.style.opacity = "0";
     }
 
-    requestAnimationFrame(syncHeaderScroll);
+    const frameId = requestAnimationFrame(syncHeaderScroll);
+
+    return () => cancelAnimationFrame(frameId);
   }, [pathname]);
 
   useEffect(() => {
@@ -100,7 +102,7 @@ function Header() {
       const windowScrolled =
         window.scrollY > 50 || document.documentElement.scrollTop > 50;
       const containerScrolled =
-        target && target !== document && target.scrollTop > 50;
+        target instanceof HTMLElement && target.scrollTop > 50;
 
       if (windowScrolled || containerScrolled) {
         header.classList.add("is-scroll");
@@ -133,7 +135,6 @@ function Header() {
   };
 
   const handleMobileClose = () => {
-    if (window.innerWidth > 1024) return;
     setMobileOpen(false);
     setOpenMenu(null);
     const header = headerRef.current;

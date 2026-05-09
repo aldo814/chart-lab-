@@ -91,13 +91,20 @@ const Contact = () => {
   return (
     <section className="contact">
       <div className="inner">
-        <SectionTitle
-          variant="only"
-          title="문의하기"
-          desc="아래 양식을 작성하시면 영업일 기준 1일 이내 회신드립니다."
-        />
+        <div data-aos="fade-up">
+          <SectionTitle
+            variant="only"
+            title="문의하기"
+            desc="아래 양식을 작성하시면 영업일 기준 1일 이내 회신드립니다."
+          />
+        </div>
 
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <form
+          className="contact-form"
+          onSubmit={handleSubmit}
+          data-aos="fade-up"
+          data-aos-delay="120"
+        >
           <input
             type="text"
             name="hp_field"
@@ -108,7 +115,7 @@ const Contact = () => {
             autoComplete="off"
           />
 
-          <div className="contact-form__section">
+          <div className="contact-form__section" data-aos="fade-up">
             <h4 className="contact-form__subtitle">작성자 정보</h4>
             <div className="contact-form__body">
               <div className="contact-form__row">
@@ -182,7 +189,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="contact-form__section">
+          <div className="contact-form__section" data-aos="fade-up">
             <h4 className="contact-form__subtitle">문의 내용</h4>
             <div className="contact-form__body">
               <div className="contact-form__row">
@@ -267,7 +274,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="contact-form__section">
+          <div className="contact-form__section" data-aos="fade-up">
             <h4 className="contact-form__subtitle">개인정보 처리방침 동의</h4>
             <div className="contact-form__body">
               <div className="contact-form__row">
@@ -326,7 +333,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="contact-form__section contact-form__section--captcha">
+          <div className="contact-form__section contact-form__section--captcha" data-aos="fade-up">
             <ReCAPTCHA
               ref={recaptchaRef}
               sitekey="6LdKTtEsAAAAABEiLvli2jfiJy2MGUVqpUsb4sjY"
@@ -334,7 +341,7 @@ const Contact = () => {
             />
           </div>
 
-          <div className="contact-form__actions">
+          <div className="contact-form__actions" data-aos="fade-up">
             <button
               type="submit"
               className={`contact-form__submit-btn ${

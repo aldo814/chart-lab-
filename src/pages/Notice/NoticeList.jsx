@@ -101,9 +101,11 @@ function NoticeList() {
 
   return (
     <div className="notice inner">
-      <SectionTitle variant="only" title="공지사항" />
+      <div data-aos="fade-up">
+        <SectionTitle variant="only" title="공지사항" />
+      </div>
 
-      <div className="notice__inner">
+      <div className="notice__inner" data-aos="fade-up" data-aos-delay="120">
         <div className="notice__search">
           <select
             className="notice__select"
@@ -161,6 +163,7 @@ function NoticeList() {
                 to={`/notice/${item.slug ?? item._id}`}
                 className="notice notice__item notice__item--pinned"
                 key={`pinned-${item._id}`}
+                data-aos="fade-up"
               >
                 <span className="notice__num">
                   <em className="notice__badge">공지</em>
@@ -185,6 +188,7 @@ function NoticeList() {
                 to={`/notice/${item.slug ?? item._id}`}
                 className="notice__item"
                 key={item._id}
+                data-aos="fade-up"
               >
                 <span className="notice__num">
                   {filteredNormal.length - (start + idx)}
