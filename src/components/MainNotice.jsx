@@ -14,6 +14,7 @@ function MainNotice() {
   const [list, setList] = useState([]);
   const [activeIndex, setActiveIndex] = useState(1);
   const [total, setTotal] = useState(0);
+  const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
   const swiperRef = useRef(null);
 
   const ptComponents = {
@@ -27,6 +28,7 @@ function MainNotice() {
 
     const fetchNotices = async () => {
       try {
+        setIsLoading(true);
         const pinned = await fetchWithTimeout(
           client.fetch(`
             *[_type == "notice" && isPinned == true]
@@ -59,6 +61,8 @@ function MainNotice() {
         if (ignore) return;
         setList([]);
         setTotal(0);
+      } finally {
+        if (!ignore) setIsLoading(false);
       }
     };
 
@@ -72,76 +76,90 @@ function MainNotice() {
   return (
     <div className="notice-swiper">
       <div className="notice-swiper__header">
-        <button className="notice-prev notice-button" aria-label="이전">
+        {/* 리스트가 없으면 disabled 처리하여 버튼을 멈춤 */}
+        <button
+          className={`notice-prev notice-button ${total === 0 ? "is-disabled" : ""}`}
+          aria-label="이전"
+          disabled={total === 0}
+        >
           <CaretLeftIcon size={16} />
         </button>
         <div className="notice-swiper__counter">
           <span className="notice-swiper__current">
-            {String(activeIndex).padStart(2, "0")}
+            {total === 0 ? "00" : String(activeIndex).padStart(2, "0")}
           </span>
           <span className="notice-swiper__sep"> / </span>
           <span className="notice-swiper__total">
             {String(total).padStart(2, "0")}
           </span>
         </div>
-        <button className="notice-next notice-button" aria-label="다음">
+        <button
+          className={`notice-next notice-button ${total === 0 ? "is-disabled" : ""}`}
+          aria-label="다음"
+          disabled={total === 0}
+        >
           <CaretRightIcon size={16} />
         </button>
       </div>
 
-      <Swiper
-        modules={[Autoplay, Navigation]}
-        slidesPerView={2}
-        spaceBetween={20}
-        loop={true}
-        autoplay={{ delay: 4000, disableOnInteraction: false }}
-        navigation={{
-          nextEl: ".notice-next",
-          prevEl: ".notice-prev",
-        }}
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-        }}
-        onSlideChange={(swiper) => {
-          setActiveIndex(swiper.realIndex + 1);
-        }}
-        breakpoints={{
-          0: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-        }}
-      >
-        {list.map((item) => (
-          <SwiperSlide key={item._id}>
-            {({ isActive }) => (
-              <Link
-                to={`/notice/${item.slug ?? item._id}`}
-                className={`notice-card ${isActive ? "notice-card--active" : ""}`}
-              >
-                <span className="notice-card__badge">
-                  {item.isPinned ? "공지" : "news"}
-                </span>
-
-                <h3 className="notice-card__title">{item.title}</h3>
-
-                <div className="notice-card__desc">
-                  {item.content ? (
-                    <PortableText
-                      value={item.content}
-                      components={ptComponents}
-                    />
-                  ) : (
-                    "내용 준비중입니다."
-                  )}
-                </div>
-
-                <time className="notice-card__date">
-                  {item.createdAt?.slice(0, 10)}
-                </time>
-              </Link>
-            )}
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {isLoading ? (
+        <div className="notice-empty">데이터를 불러오는 중입니다...</div>
+      ) : list.length > 0 ? (
+        <Swiper
+          modules={[Autoplay, Navigation]}
+          slidesPerView={2}
+          spaceBetween={20}
+          loop={total > 1} // 데이터가 1개뿐일 때는 루프 방지
+          autoplay={
+            total > 1 ? { delay: 4000, disableOnInteraction: false } : false
+          }
+          navigation={{
+            nextEl: ".notice-next",
+            prevEl: ".notice-prev",
+          }}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          onSlideChange={(swiper) => {
+            setActiveIndex(swiper.realIndex + 1);
+          }}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+          }}
+        >
+          {list.map((item) => (
+            <SwiperSlide key={item._id}>
+              {({ isActive }) => (
+                <Link
+                  to={`/notice/${item.slug ?? item._id}`}
+                  className={`notice-card ${isActive ? "notice-card--active" : ""}`}
+                >
+                  <span className="notice-card__badge">
+                    {item.isPinned ? "공지" : "news"}
+                  </span>
+                  <h3 className="notice-card__title">{item.title}</h3>
+                  <div className="notice-card__desc">
+                    {item.content ? (
+                      <PortableText
+                        value={item.content}
+                        components={ptComponents}
+                      />
+                    ) : (
+                      "내용 준비중입니다."
+                    )}
+                  </div>
+                  <time className="notice-card__date">
+                    {item.createdAt?.slice(0, 10)}
+                  </time>
+                </Link>
+              )}
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      ) : (
+        <div className="notice-empty">게시물이 없습니다.</div>
+      )}
     </div>
   );
 }
