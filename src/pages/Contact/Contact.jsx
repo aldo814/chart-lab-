@@ -55,14 +55,11 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(
-        "/api/contact",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
       if (!response.ok) {
         throw new Error("Failed to submit contact form");
@@ -333,10 +330,13 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="contact-form__section contact-form__section--captcha" data-aos="fade-up">
+          <div
+            className="contact-form__section contact-form__section--captcha"
+            data-aos="fade-up"
+          >
             <ReCAPTCHA
               ref={recaptchaRef}
-              sitekey="6LdKTtEsAAAAABEiLvli2jfiJy2MGUVqpUsb4sjY"
+              sitekey="6LeaHuYsAAAAAGsbjZAxtkWODTMBepY8AaiAboQj"
               onChange={(val) => setCaptchaValue(val)}
             />
           </div>
