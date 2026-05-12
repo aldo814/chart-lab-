@@ -61,7 +61,7 @@ function Main() {
     { id: 2, src: p2, alt: "신한투자증권" },
     { id: 3, src: p3, alt: "유안타증권" },
     { id: 4, src: p7, alt: "NH 선물" },
-    { id: 5, src: p5, alt: "유진투자증권" },
+    { id: 5, src: p5, alt: "유진투자선물" },
     // { id: 6, src: p1, alt: "ibk 기업은행" },
     // { id: 7, src: p8, alt: "연합인포맥스" },
     // { id: 8, src: p9, alt: "피비씨미디어" },

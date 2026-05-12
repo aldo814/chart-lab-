@@ -1,53 +1,50 @@
 import React from "react";
 import SectionTitle from "../../components/SectionTitle";
 import img01 from "../../assets/images/sub/portfoilo_ls.png";
-import img02 from "../../assets/images/sub/portfoilo_sh.png";
-import img03 from "../../assets/images/sub/portfoilo_u.png";
-import img04 from "../../assets/images/sub/portfoilo_yj.png";
-import img05 from "../../assets/images/sub/portfoilo_nh.png";
+import img02 from "../../assets/images/sub/ls-mts.png";
+import img03 from "../../assets/images/sub/portfoilo_sh.png";
+import img04 from "../../assets/images/sub/portfoilo_u.png";
+import img05 from "../../assets/images/sub/portfoilo_yj.png";
+import img06 from "../../assets/images/sub/ls-tuhon.png";
 
 const Project = () => {
   // 프로젝트 리스트 데이터
   const projectList = [
     {
-      badge: "LS증권",
-      name: "LS증권",
-      desc: "프로젝트에 대한 2~3줄 설명이 들어갑니다. 어떤 문제를 해결했는지, 어떤 기능을 구현했는지 등 핵심 포인트만 간결하게 정리됩니다.",
-      year: "2026",
-      type: "차트 개발",
+      badge: "LS증권 Tuhon",
+      name: "Tuhon HTS",
+      desc: "2026년 3월 납품된 파워차트 2.5버전 최고의 성능과 최신의 기능, MTS차트와 연동되는 강력한 분석 차트",
       img: img01,
     },
     {
-      badge: "신한투자증권",
-      name: "신한투자증권",
-      desc: "프로젝트에 대한 2~3줄 설명이 들어갑니다. 어떤 문제를 해결했는지, 어떤 기능을 구현했는지 등 핵심 포인트만 간결하게 정리됩니다.",
-      year: "2026",
-      type: "차트 개발",
+      badge: "LS증권 Tuhon",
+      name: "Tuhon MTS",
+      desc: "2026년 3월 납품된 파워그래픽스 3.0버전 국내 주식, 선물, 지수, 해외 주식, 선물, 지수 등 다양한 시장의 모바일 분석 차트",
       img: img02,
     },
     {
-      badge: "유안타증권",
-      name: "유안타증권",
-      desc: "프로젝트에 대한 2~3줄 설명이 들어갑니다. 어떤 문제를 해결했는지, 어떤 기능을 구현했는지 등 핵심 포인트만 간결하게 정리됩니다.",
-      year: "2026",
-      type: "차트 개발",
+      badge: "신한 알파",
+      name: "알파 HTS",
+      desc: "HTS차트의 업그레이드 파워차트 2.5 버전으로 종합차트, 폼차트, 폼그래프, 전광판차트 등 지원",
       img: img03,
     },
     {
-      badge: "유진투자선물",
-      name: "유진투자선물",
-      desc: "프로젝트에 대한 2~3줄 설명이 들어갑니다. 어떤 문제를 해결했는지, 어떤 기능을 구현했는지 등 핵심 포인트만 간결하게 정리됩니다.",
-      year: "2026",
-      type: "차트 개발",
+      badge: "유안타 tRadar",
+      name: "tRadar HTS",
+      desc: "파워차트 2.0버전으로 날씨를 차트에 표현한 햇볕, 안개구간의 종합차트, 폼차트, 폼그래프",
       img: img04,
     },
     {
-      badge: "NH투자선물",
-      name: "NH투자선물",
-      desc: "프로젝트에 대한 2~3줄 설명이 들어갑니다. 어떤 문제를 해결했는지, 어떤 기능을 구현했는지 등 핵심 포인트만 간결하게 정리됩니다.",
-      year: "2026",
-      type: "차트 개발",
+      badge: "유진 챔피언 퓨처스",
+      name: "챔피언 퓨처스 HTS",
+      desc: "국내파생, 해외파생 전문 분석 파워차트 2.5버전으로 강력한 분석기능을 탑재한 차트와 시의성을 극대화한 HTS 디자인",
       img: img05,
+    },
+    {
+      badge: "LS증권 Tuhon",
+      name: "Tuhon HTS",
+      desc: "2026년 3월 납품된 파워차트 2.5버전 최고의 성능과 최신의 기능, MTS차트와 연동되는 강력한 분석 차트",
+      img: img06,
     },
   ];
 
@@ -89,17 +86,6 @@ const Project = () => {
                     </h3>
 
                     <p className="sub-business__desc">{item.desc}</p>
-                  </div>
-
-                  <div className="project-info">
-                    <div className="project-info__item">
-                      <span className="project-info__label">YEAR</span>
-                      <span className="project-info__value">{item.year}</span>
-                    </div>
-                    <div className="project-info__item">
-                      <span className="project-info__label">TYPE</span>
-                      <span className="project-info__value">{item.type}</span>
-                    </div>
                   </div>
                 </div>
               </div>

@@ -71,7 +71,7 @@ const Location = () => {
           <div className="sub-location__map-box">
             {NAVER_CLIENT_ID ? (
               <NavermapsProvider ncpKeyId={NAVER_CLIENT_ID}>
-                <MapDiv style={{ width: "100%", height: "500px" }}>
+                <MapDiv>
                   <NaverMap
                     defaultCenter={position}
                     defaultZoom={17}

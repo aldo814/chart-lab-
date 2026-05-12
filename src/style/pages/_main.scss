@@ -352,7 +352,14 @@
     }
 
     &.section--light {
-      background: url(../../assets/images/main/bg_product01.svg) no-repeat left bottom;
+      background: linear-gradient(
+        135deg,
+        rgba(47, 107, 255, 0.4) 10%,
+        rgba(47, 107, 255, 0.2) 40%,
+        rgba(47, 107, 255, 0.05) 70%,
+        rgba(47, 107, 255, 0) 100%
+      ),
+      url(../../assets/images/main/bg_product01.svg) no-repeat left bottom;;
 
       .product-item__img {
         img{
