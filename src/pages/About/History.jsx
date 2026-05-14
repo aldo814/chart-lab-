@@ -119,7 +119,7 @@ const History = () => {
               dangerouslySetInnerHTML={{ __html: ceoData.desc }}
             />
             <div className="sub-history__ceo-name">
-              차트연구소 직원 일동 드림
+              (주)차트연구소 임직원 일동 드림
             </div>
           </div>
           <div className="sub-history__ceo-image">
@@ -143,7 +143,11 @@ const History = () => {
         <div data-aos="fade-up">
           <SectionTitle variant="sub" en="HISTORY" title="연혁" />
         </div>
-        <div className="sub-history__timeline-inner" data-aos="fade-up" data-aos-delay="120">
+        <div
+          className="sub-history__timeline-inner"
+          data-aos="fade-up"
+          data-aos-delay="120"
+        >
           {/* 탭 */}
           <div className="sub-history__tabs">
             <ul className="sub-history__tab-list">
@@ -166,7 +170,11 @@ const History = () => {
           {/* 리스트 */}
           <div className="sub-history__list">
             {groupedData[activeTab].map((item) => (
-              <div key={item.year} className="sub-history__item" data-aos="fade-up">
+              <div
+                key={item.year}
+                className="sub-history__item"
+                data-aos="fade-up"
+              >
                 <div className="sub-history__year">{item.year}</div>
 
                 <ul className="sub-history__list">

@@ -3,6 +3,10 @@ import ReCAPTCHA from "react-google-recaptcha";
 import SectionTitle from "../../components/SectionTitle";
 import icoForm from "../../assets/images/sub/ico_form.svg";
 
+// ✅ Google Apps Script 엔드포인트
+const GAS_URL =
+  "https://script.google.com/macros/s/AKfycbxw-xi5IOVWsNeyXZZxwhc2aPSkK7gDtcm1V-Yo2p2fYJ2lNkvAV5p_nVWAzHmT2CxhoQ/exec";
+
 const Contact = () => {
   const recaptchaRef = useRef(null);
   const fileInputRef = useRef(null);
@@ -47,6 +51,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // 허니팟 봇 차단
     if (hpValue) return;
     if (!formData.agree) return alert("개인정보 처리방침에 동의해주세요.");
     if (!captchaValue) return alert("로봇 검사를 완료해주세요.");
@@ -55,17 +60,25 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/contact", {
+      // ✅ Google Apps Script는 CORS 때문에 FormData + no-cors 방식 사용
+      const payload = new FormData();
+      payload.append("company", formData.company);
+      payload.append("name", formData.name);
+      payload.append("email", formData.email);
+      payload.append("tel", formData.tel);
+      payload.append("subject", formData.subject);
+      payload.append("message", formData.message);
+      payload.append("timestamp", new Date().toLocaleString("ko-KR"));
+
+      await fetch(GAS_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        mode: "no-cors", // GAS는 CORS 응답 없음 → no-cors 필수
+        body: payload,
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to submit contact form");
-      }
-
+      // no-cors는 응답을 읽을 수 없으므로 전송 성공으로 간주
       alert("문의가 성공적으로 접수되었습니다.");
+
       setFormData({
         company: "",
         name: "",
@@ -79,6 +92,7 @@ const Contact = () => {
       setCaptchaValue(null);
       if (recaptchaRef.current) recaptchaRef.current.reset();
     } catch (error) {
+      console.error("Contact submit error:", error);
       alert("서버 통신 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
     } finally {
       setIsSubmitting(false);
@@ -102,6 +116,7 @@ const Contact = () => {
           data-aos="fade-up"
           data-aos-delay="120"
         >
+          {/* 허니팟 - 봇 차단용 숨김 필드 */}
           <input
             type="text"
             name="hp_field"
@@ -112,6 +127,7 @@ const Contact = () => {
             autoComplete="off"
           />
 
+          {/* 작성자 정보 */}
           <div className="contact-form__section" data-aos="fade-up">
             <h4 className="contact-form__subtitle">작성자 정보</h4>
             <div className="contact-form__body">
@@ -186,6 +202,7 @@ const Contact = () => {
             </div>
           </div>
 
+          {/* 문의 내용 */}
           <div className="contact-form__section" data-aos="fade-up">
             <h4 className="contact-form__subtitle">문의 내용</h4>
             <div className="contact-form__body">
@@ -271,6 +288,7 @@ const Contact = () => {
             </div>
           </div>
 
+          {/* 개인정보 동의 */}
           <div className="contact-form__section" data-aos="fade-up">
             <h4 className="contact-form__subtitle">개인정보 처리방침 동의</h4>
             <div className="contact-form__body">
@@ -311,7 +329,7 @@ const Contact = () => {
                         수집·이용합니다.
                       </strong>
                     </p>
-                    <br></br>
+                    <br />
                     <ul className="dot-list">
                       <li>수집 항목: 이름, 이메일, 연락처</li>
                       <li>수집 목적: 문의사항 확인 및 답변 제공</li>
@@ -319,7 +337,7 @@ const Contact = () => {
                         보유 및 이용 기간: 문의 처리 완료 후 1년간 보관 후 파기
                       </li>
                     </ul>
-                    <br></br>
+                    <br />
                     <p>
                       이용자는 개인정보 수집 및 이용에 대한 동의를 거부할 권리가
                       있으며, 동의 거부 시 문의 접수가 제한될 수 있습니다.
@@ -330,6 +348,7 @@ const Contact = () => {
             </div>
           </div>
 
+          {/* reCAPTCHA */}
           <div
             className="contact-form__section contact-form__section--captcha"
             data-aos="fade-up"
@@ -341,12 +360,11 @@ const Contact = () => {
             />
           </div>
 
+          {/* 제출 버튼 */}
           <div className="contact-form__actions" data-aos="fade-up">
             <button
               type="submit"
-              className={`contact-form__submit-btn ${
-                isSubmitting ? "is-loading" : ""
-              }`}
+              className={`contact-form__submit-btn ${isSubmitting ? "is-loading" : ""}`}
               disabled={isSubmitting}
             >
               {isSubmitting ? "전송 중..." : "문의 접수하기"}

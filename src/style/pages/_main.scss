@@ -1262,3 +1262,12 @@
 
 .notice-empty{display: flex;align-items: center;justify-content: center;height: 200px;color: var(--gray-600, #666);font-size: .9375rem;border: 1px solid #eee;border-radius: 1rem;background: #f9f9f9;}
 .notice-button.is-disabled{opacity: 0.3;cursor: default;pointer-events: none;}
+
+
+@media screen and (max-width:1600px) and (min-width:1280px) {
+  .main-page{
+    .inner{padding-left: 160px;}
+    .section--hero .hero-control{padding-left: 130px }
+  }
+  
+}

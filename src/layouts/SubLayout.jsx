@@ -46,10 +46,10 @@ const MENU_DATA = {
   },
   contact: {
     title: "CONTACT",
-    breadcrumb: "상담문의",
+    breadcrumb: "제품 문의",
     desc: "금융 솔루션 도입 및 파트너십 문의 등 \n 궁금하신 점을 남겨주시면 정성껏 답변해 드립니다",
-    seoTitle: "상담문의 | 차트연구소",
-    keywords: "상담문의, 고객센터, 제휴문의",
+    seoTitle: "제품 문의 | 차트연구소",
+    keywords: "제품 문의, 고객센터, 제휴문의",
     sub: [],
   },
 };
@@ -162,7 +162,11 @@ function SubLayout() {
             </nav>
           )}
 
-          <main className="sub-container" data-aos="fade-up" data-aos-delay="180">
+          <main
+            className="sub-container"
+            data-aos="fade-up"
+            data-aos-delay="180"
+          >
             <Outlet />
           </main>
         </div>

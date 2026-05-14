@@ -246,7 +246,7 @@ function Header() {
                 className="gnb__link"
                 onClick={handleMobileClose}
               >
-                상담문의
+                제품 문의
               </Link>
               {!mobileOpen && (
                 <ul className="gnb__depth2">

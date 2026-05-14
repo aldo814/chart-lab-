@@ -10,13 +10,16 @@ const PowerGraphics = () => {
     features: [
       {
         title:
-          "지표 250종, 신호 160종, 구간 70종, 패턴 100종, 채움 40종을 갖춘 HTS급 분석 수식",
+          "지표 250종, 신호 160종, 구간 70종, 패턴 100종, 채움 40종을 갖춘 HTS급 분석 수식  ",
       },
       {
-        title: "17종의 차트 유형 및 40여 종의 추세선",
+        title: "17종의 라인 유형 및 40여 종의 추세선 ",
       },
       {
-        title: "비교 차트, 다양한 폼 차트, 폼 그래프",
+        title: "비교차트, 다양한 폼 차트, 폼 그래프  ",
+      },
+      {
+        title: "업계 최초 모바일용 마켓맵 차트",
       },
       {
         title: "최대 4개 분할을 지원하는 분할 차트",
@@ -100,7 +103,11 @@ const PowerGraphics = () => {
             <SectionTitle variant="sub" en="more FEATURE" title="핵심 강점" />
           </div>
 
-          <div className="product__item" data-aos="fade-up" data-aos-delay="120">
+          <div
+            className="product__item"
+            data-aos="fade-up"
+            data-aos-delay="120"
+          >
             <div className="product__img">
               <img src={subItem.img} alt="" />
             </div>
