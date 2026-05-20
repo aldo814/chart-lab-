@@ -7,6 +7,29 @@ import icoForm from "../../assets/images/sub/ico_form.svg";
 const GAS_URL =
   "https://script.google.com/macros/s/AKfycbxw-xi5IOVWsNeyXZZxwhc2aPSkK7gDtcm1V-Yo2p2fYJ2lNkvAV5p_nVWAzHmT2CxhoQ/exec";
 
+const MAX_FILES = 5;
+const MAX_TOTAL_FILE_SIZE = 10 * 1024 * 1024;
+
+const fileToAttachment = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const result = String(reader.result || "");
+      const [, base64 = ""] = result.split(",");
+
+      resolve({
+        name: file.name,
+        type: file.type || "application/octet-stream",
+        size: file.size,
+        data: base64,
+      });
+    };
+
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+
 const Contact = () => {
   const recaptchaRef = useRef(null);
   const fileInputRef = useRef(null);
@@ -34,7 +57,21 @@ const Contact = () => {
 
   const handleFileChange = (e) => {
     const selected = Array.from(e.target.files);
-    setFiles((prev) => [...prev, ...selected]);
+    setFiles((prev) => {
+      const next = [...prev, ...selected].slice(0, MAX_FILES);
+      const totalSize = next.reduce((sum, file) => sum + file.size, 0);
+
+      if (prev.length + selected.length > MAX_FILES) {
+        alert(`첨부파일은 최대 ${MAX_FILES}개까지 등록할 수 있습니다.`);
+      }
+
+      if (totalSize > MAX_TOTAL_FILE_SIZE) {
+        alert("첨부파일 전체 용량은 최대 10MB까지 등록할 수 있습니다.");
+        return prev;
+      }
+
+      return next;
+    });
     e.target.value = "";
   };
 
@@ -69,6 +106,10 @@ const Contact = () => {
       payload.append("subject", formData.subject);
       payload.append("message", formData.message);
       payload.append("timestamp", new Date().toLocaleString("ko-KR"));
+      payload.append(
+        "attachments",
+        JSON.stringify(await Promise.all(files.map(fileToAttachment)))
+      );
 
       await fetch(GAS_URL, {
         method: "POST",

@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createHashRouter, Navigate } from "react-router-dom";
 
 import MainLayout from "../layouts/MainLayout";
 import SubLayout from "../layouts/SubLayout";
@@ -18,7 +18,7 @@ import Notice from "../pages/Notice/NoticeList";
 import NoticeView from "../pages/Notice/NoticeView";
 import Contact from "../pages/Contact/Contact";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <MainLayout />,
