@@ -5,7 +5,7 @@ import img02 from "../../assets/images/sub/ls-mts.png";
 import img03 from "../../assets/images/sub/portfoilo_sh.png";
 import img04 from "../../assets/images/sub/portfoilo_u.png";
 import img05 from "../../assets/images/sub/portfoilo_yj.png";
-import img06 from "../../assets/images/sub/ls-tuhon.png";
+import img06 from "../../assets/images/sub/ls-sp.png";
 
 const Project = () => {
   // 프로젝트 리스트 데이터
@@ -41,9 +41,9 @@ const Project = () => {
       img: img05,
     },
     {
-      badge: "LS증권 Tuhon",
-      name: "Tuhon HTS",
-      desc: "2026년 3월 납품된 파워차트 2.5버전 최고의 성능과 최신의 기능, MTS차트와 연동되는 강력한 분석 차트",
+      badge: "NH투자선물 써핑보드",
+      name: "써핑보드 HTS",
+      desc: "국내파생,해외파생 전문 분석 파워차트 2.5버전으로 최대 24개의 차트 분할,보다 정교해진 보조지표를 활용하여 다양한 품목들의 차트 분석",
       img: img06,
     },
   ];

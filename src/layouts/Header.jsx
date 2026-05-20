@@ -251,7 +251,7 @@ function Header() {
               {!mobileOpen && (
                 <ul className="gnb__depth2">
                   <li>
-                    <Link to="/contact">상담문의</Link>
+                    <Link to="/contact">제품 문의</Link>
                   </li>
                 </ul>
               )}
