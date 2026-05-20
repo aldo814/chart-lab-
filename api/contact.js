@@ -1,5 +1,4 @@
-const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbzlgBajtWFIkfUfVVYZXsPZ5L0F-IdGtI1kZLwOq5ru6aLQSs7V1ya-oqrziZjY3AyLjw/exec";
+const GOOGLE_SCRIPT_URL = process.env.GOOGLE_APPS_SCRIPT_URL;
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -8,6 +7,10 @@ export default async function handler(req, res) {
   }
 
   try {
+    if (!GOOGLE_SCRIPT_URL) {
+      return res.status(500).json({ message: "Missing Google Apps Script URL" });
+    }
+
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
       headers: { "Content-Type": "text/plain;charset=utf-8" },

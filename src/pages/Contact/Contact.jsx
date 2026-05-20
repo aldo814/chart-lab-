@@ -3,10 +3,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 import SectionTitle from "../../components/SectionTitle";
 import icoForm from "../../assets/images/sub/ico_form.svg";
 
-// Google Apps Script endpoint
-const GAS_URL =
-  "https://script.google.com/macros/s/AKfycbwazW0c5X1H_1KitPRXHrzLgpZboTbg3BnVsQpRv4tEful2PLmG0vQyMSYXR9LhJlqDQw/exec";
-
+const GAS_URL = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL;
+const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 const MAX_FILES = 5;
 const MAX_TOTAL_FILE_SIZE = 10 * 1024 * 1024;
 
@@ -396,7 +394,7 @@ const Contact = () => {
           >
             <ReCAPTCHA
               ref={recaptchaRef}
-              sitekey="6LeaHuYsAAAAAGsbjZAxtkWODTMBepY8AaiAboQj"
+              sitekey={RECAPTCHA_SITE_KEY}
               onChange={(val) => setCaptchaValue(val)}
             />
           </div>
