@@ -3,9 +3,9 @@ import ReCAPTCHA from "react-google-recaptcha";
 import SectionTitle from "../../components/SectionTitle";
 import icoForm from "../../assets/images/sub/ico_form.svg";
 
-// ✅ Google Apps Script 엔드포인트
+// Google Apps Script endpoint
 const GAS_URL =
-  "https://script.google.com/macros/s/AKfycbxw-xi5IOVWsNeyXZZxwhc2aPSkK7gDtcm1V-Yo2p2fYJ2lNkvAV5p_nVWAzHmT2CxhoQ/exec";
+  "https://script.google.com/macros/s/AKfycbwazW0c5X1H_1KitPRXHrzLgpZboTbg3BnVsQpRv4tEful2PLmG0vQyMSYXR9LhJlqDQw/exec";
 
 const MAX_FILES = 5;
 const MAX_TOTAL_FILE_SIZE = 10 * 1024 * 1024;
@@ -97,7 +97,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // ✅ Google Apps Script는 CORS 때문에 FormData + no-cors 방식 사용
+      // Google Apps Script requires FormData with no-cors in this setup.
       const payload = new FormData();
       payload.append("company", formData.company);
       payload.append("name", formData.name);
