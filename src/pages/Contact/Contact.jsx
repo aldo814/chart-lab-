@@ -392,11 +392,17 @@ const Contact = () => {
             className="contact-form__section contact-form__section--captcha"
             data-aos="fade-up"
           >
-            <ReCAPTCHA
-              ref={recaptchaRef}
-              sitekey={RECAPTCHA_SITE_KEY}
-              onChange={(val) => setCaptchaValue(val)}
-            />
+            {RECAPTCHA_SITE_KEY ? (
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={RECAPTCHA_SITE_KEY}
+                onChange={(val) => setCaptchaValue(val)}
+              />
+            ) : (
+              <p className="contact-form-alert">
+                reCAPTCHA site key가 설정되지 않았습니다.
+              </p>
+            )}
           </div>
 
           {/* 제출 버튼 */}
